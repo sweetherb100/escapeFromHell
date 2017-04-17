@@ -74,16 +74,10 @@ class BinarySearchTree:
                 self.head=None
             # 2) Node to be removed has one child
             elif self.head.left is None and self.head.right is not None:
-                # self.head.val = self.head.right.val
-                # self.head.right=None
                 self.head=self.head.right
-                #########################질문올리기
             # 2) Node to be removed has one child
             elif self.head.left is not None and self.head.right is None:
-                # self.head.val=self.head.left.val
-                # self.head.left=None
                 self.head=self.head.left
-                #########################질문올리기
             # 3) Node to be removed has two children
             else:
                 self.head.val=self.__most_left_val_from_right_node(self.head.right).val

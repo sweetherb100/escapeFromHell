@@ -6,7 +6,6 @@
 # 2) min Heap Tree (root가 가장 작은 값일 때)
 # Heap 특성 : parent가 자식보다 클 때 (혹은 작을 때)
 
-
 #use Array as a data structure of heap tree
 def Heapsort(a):
     #기본 아이디어 : 노드를 순회하면서 치환해주면 되는데, 그러면 퍼포먼스가 매우 떨어짐
