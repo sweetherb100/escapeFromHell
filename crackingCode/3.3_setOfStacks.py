@@ -1,6 +1,14 @@
-# Question : Set of Stacks
-# stack 문제 : push(over flow), pop(under flow) 고려
-# (그 외 peek(), is_empty(), size())
+'''
+*Question : Set of Stacks
+SetOfStacks should be composed of several stacks, and should create a new stack
+once the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should 
+behave identically to a single stack
+
+*Outline
+1) Implement Stack class and Stacks class using Stack class
+2) Initialize first stack in the stacklist (careful)
+-> self.stacklist.append(Stack())
+'''
 
 class Stack():
     def __init__(self):
@@ -29,12 +37,12 @@ class Stacks():
     def __init__(self):
         self.stacklist=[]
         self.max_stack_size=3
-        #initialize first stack in the stack list
+        #initialize first stack in the stacklist
         self.stacklist.append(Stack())
 
     def push(self,item):
         st=self.getLastStack()
-        if self.max_stack_size == st.size(): #overflow
+        if self.max_stack_size == st.size():
             newSt = Stack()
             newSt.push(item)
             self.stacklist.append(newSt)
@@ -50,11 +58,9 @@ class Stacks():
         else :
             print('there is no item in Stacks')
 
-        ###########질문올리기
-        # if st.is_empty(): #underflow
-        #     print('len(self.stacklist) ',len(self.stacklist))
+        #If so, getStackCount doesn't match the real count of Stacks (WRONG WAY)
+        # if st.is_empty():
         #     self.stacklist.pop()
-        #     print('len(self.stacklist) ', len(self.stacklist))
         #     st = self.getLastStack()
         #     st.pop()
         # else:
@@ -74,7 +80,7 @@ class Stacks():
         return result
 
 
-#Stack()클래스 자체를 쓰는게 아니라 Stacks()클래스로 구현
+#use Stacks class, not Stack class
 stacks=Stacks()
 stacks.push(5)
 stacks.push(3)

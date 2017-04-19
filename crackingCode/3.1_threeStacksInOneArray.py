@@ -1,19 +1,15 @@
-#stack : 1)push(stack-overflow 고려)
-        #2)pop(stack-underflow 고려) 메소드 구현
+'''
+*Question : Use single array for three stacks
 
-#문제 : 하나의 배열에 3개의 stack 만들기.
-# 따라서 self.array=[None]*stack_size*3으로 선언
+*Python
+1) self.array=[None]*stack_size*3
+in each index, there is None + set the size at the same time
+2) for class declaration, () or no () does not matter (stacks_in_array() is also OK)
+'''
 
-#python 메소드
-# 1) self.array=[None]*stack_size*3
-# 각 인자에 None 추가하고 크기까지 한꺼번에 설정 가능
-# 2) class 이름 선언 시에 class에 괄호가 있든 없든 상관 없음 (stacks_in_array()도 OK)
-
-
-class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_in_array()도 OK)
+class stacks_in_array:
     def __init__(self,stack_size):
         self.array=[None]*stack_size*3
-        #각 인자에 None 추가하고 크기까지 한꺼번에 설정 가능
         self.stack_size = stack_size
 
         self.stack1_bottom=0
@@ -28,7 +24,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
         self.stack3_idx=self.stack2_idx + self.stack_size
 
     def push_stack1(self,val):
-        if self.stack1_idx==self.stack1_top: #stack overflow
+        if self.stack1_idx==self.stack1_top:
             print("stack1 is full")
             return False
         else:
@@ -37,7 +33,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
             return True
 
     def push_stack2(self,val):
-        if self.stack2_idx==self.stack2_top: #stack overflow
+        if self.stack2_idx==self.stack2_top:
             print("stack2 is full")
             return False
         else:
@@ -46,7 +42,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
             return True
 
     def push_stack3(self,val):
-        if self.stack3_idx==self.stack3_top: #stack overflow
+        if self.stack3_idx==self.stack3_top:
             print("stack3 is full")
             return False
         else:
@@ -55,7 +51,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
             return True
 
     def pop_stack1(self):
-        if self.stack1_idx==self.stack1_bottom: #stack underflow
+        if self.stack1_idx==self.stack1_bottom:
             print("stack1 is empty")
             return False
         elif self.stack1_bottom < self.stack1_idx:
@@ -67,7 +63,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
             return False
 
     def pop_stack2(self):
-        if self.stack2_idx==self.stack2_bottom: #stack underflow
+        if self.stack2_idx==self.stack2_bottom:
             print("stack2 is empty")
             return False
         elif self.stack2_bottom < self.stack2_idx:
@@ -79,7 +75,7 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
             return False
 
     def pop_stack3(self):
-        if self.stack3_idx==self.stack3_bottom: #stack underflow
+        if self.stack3_idx==self.stack3_bottom:
             print("stack1 is empty")
             return False
         elif self.stack3_bottom < self.stack3_idx:
@@ -94,13 +90,6 @@ class stacks_in_array: #class에 괄호가 있든 없든 상관 없음 (stacks_i
         return self.array
 
 arrayStack=stacks_in_array(3)
-print(type(arrayStack)) #<class '__main__.stacks_in_array'>
-print(arrayStack) #<__main__.stacks_in_array object at 0x02A9A470>
-print(arrayStack.printArray()) #[None, None, None, None, None, None, None, None, None]
-arrayTest = [None]*3*3
-print(arrayTest) #[None, None, None, None, None, None, None, None, None]
-print(type(arrayTest)) #<class 'list'>
-print('**************above console is test')
 arrayStack.push_stack1(1)
 arrayStack.push_stack1(2)
 arrayStack.push_stack1(3)

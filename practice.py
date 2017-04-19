@@ -1,22 +1,19 @@
-vertexList = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-edgeList = [(0,1), (1,2), (1,3), (3,4), (4,5), (1,6)]
-graphs = (vertexList, edgeList)
+# class Solution(object):
+#     def twoSum(self, nums, target):
+#         """
+#         :type nums: List[int]
+#         :type target: int
+#         :rtype: List[int]
+#         """
+#         result = []
+#         for i, num in enumerate(nums):
+#             for i2 in range(i+1,len(nums)):
+#                 # print('i :',i,'i2 :',i2)
+#
+# solution = Solution()
+# print(solution.twoSum([2,7,11,15],9))
+print(range(5,10))
 
-def bfs(graph, start):
-    vertexList, edgeList = graph
-    visitedList = []
-    queue = [start]
-    adjacencyList = [[] for vertex in vertexList] #크기 선언
-    for edge in edgeList:
-        adjacencyList[edge[0]].append(edge[1]) #값 넣기
-
-    # bfs
-    while queue:
-        current=queue.pop()
-        for neighbor in adjacencyList[current]:
-            if not neighbor in visitedList:
-                queue.insert(0,neighbor)
-        visitedList.append(current)
-    return visitedList
-
-print(bfs(graphs, 0))
+nums =[1,2,3,4,5]
+for i in range(2,len(nums)):
+    print(i)

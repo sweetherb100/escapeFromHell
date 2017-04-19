@@ -1,10 +1,15 @@
-# stack은 언제 사용하느냐?
-# 1) Browser back button
-# 2) DFS (Depth First Search)
-# -------------
-# | <- <- <-
-# | <- <- <-
-# -------------
+'''
+*Outline
+1) data type : list
+2) methods : push(append), pop(pop)
+(peek, is_empty, size, print methods are optional)
+3) overflow (when push), underflow(when pop) needed to be considered
+
+*When stack is used?
+1) Browser back button
+2) DFS (Depth First Search)
+'''
+
 class Stack:
     def __init__(self):
         self.items=[]
@@ -13,13 +18,13 @@ class Stack:
     def push(self,item):
         if len(self.items) < self.max:
             self.items.append(item)
-        else:
+        else: #overflow
             print("abort push in order to prevent stack overflow")
 
     def pop(self):
         if len(self.items) > 0:
             self.items.pop()
-        else:
+        else: #underflow
             print("abort push in order to prevent stack underflow")
 
     def print_stack(self):
@@ -39,15 +44,9 @@ stack = Stack()
 stack.push(1)
 stack.push(2)
 stack.push(3)
-stack.print_stack()
-#[1,2,3]
+stack.print_stack() #[1,2,3]
 stack.pop()
-stack.print_stack()
-#[1,2]
-print(stack.peek())
-#2
+stack.print_stack() #[1,2]
+print(stack.peek()) #2
 print(stack.is_empty())
 print(stack.size())
-
-#참고 사이트
-# https://github.com/minsuk-heo/problemsolving/blob/master/data_structure/Stack.py

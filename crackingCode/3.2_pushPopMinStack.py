@@ -1,8 +1,13 @@
-#stack has min function O(1)
-#my way
+'''
+*Question : How would you design a stack which, in addition to push and pop,
+also has a function min which returns the minimum element?
+Push, pop and min should all operate in O(1) time.
 
-#python 메소드
-#1)peek() 구현 : array[-1] (맨 마지막 element)
+*Python
+#1)peek() method : use array[-1] (the last element)
+
+*My own way
+'''
 
 class stack():
     def __init__(self):
@@ -11,6 +16,7 @@ class stack():
 
     def push(self,item):
         self.items.append(item)
+
         if len(self.mins) ==0 : #first push
             self.mins.append(item)
         elif item < self.mins[-1]:

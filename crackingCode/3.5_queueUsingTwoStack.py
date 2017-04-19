@@ -1,4 +1,6 @@
-#implement queue using two stacks
+'''
+*Question : Implement a queue using two stacks.
+'''
 
 class Stack:
     def __init__(self):
@@ -8,8 +10,7 @@ class Stack:
     def push(self,item):
         self.items.append(item)
 
-    def pop(self):
-        #여기서는 단순히 pop만하는게 아니라 값도 return 시켜야
+    def pop(self): #don't just pop but also return the value (to be used at the Queue Class)
         return self.items.pop()
 
     def peek(self):
