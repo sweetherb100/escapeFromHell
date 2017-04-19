@@ -3,9 +3,12 @@
 # Recursion 개념도 확인 가능
 # Search, Delete, Insert : O(log n)
 # cf) LinkedList의 Search, Delete, Insert : O(n)으로 상당히 느림
-# 특징
+# 정의
 # 1) 왼쪽 부트리 노드는 부모 노드보다 작거나 같다.
 # 2) 오른쪽 부트리 노드는 부모 노드보다 크거나 같다.
+#
+# 특징
+# BST를 inorder traverse로 순회하면 ascending order로 sorting이 된다. (O(n))
 #
 # 트리 : 노드들의 구성체. 노드들이 서로 연결된 것
 
