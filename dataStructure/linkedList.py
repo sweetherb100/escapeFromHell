@@ -15,7 +15,6 @@ class LinkedList:
         cur=self.head
         while cur.next is not None:
             cur=cur.next
-            #while문을 통해 linkedList 끝으로 간다.
         cur.next=Node(item)
 
     def remove(self,item):
