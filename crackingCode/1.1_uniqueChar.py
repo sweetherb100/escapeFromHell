@@ -1,14 +1,16 @@
-# To Think About
-# 1) Compare each characters? : O(N^2). very simple
-# 2) Any better solutions? : HashTable?
-# 3) What if we use hash? O(N)
-# 4) Ok... can we imporve more?
-# 5) If charcters are asci characters(total 256 characters),
-# >56 must be duplicate
-#
-# Python 메소드
-# 1) ord("X") : 실제 문자 -> ASCII 코드 번호
-# 2) chr(90) : ASCII 코드 번호 -> 실제 문자
+'''
+* To Think About
+1) Compare each characters? : O(N^2). very simple
+2) Any better solutions? : HashTable?
+3) What if we use hash? O(N)
+4) Ok... can we improve more?
+5) If characters are ascii characters(total 256 characters),
+>56 must be duplicate
+
+* Python
+1) ord("X") : char -> ASCII code number
+2) chr(90) : ASCII code number -> char
+'''
 
 def isUniqChars(str):
     #assume characters are ASCII, total 256 characters

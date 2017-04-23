@@ -1,14 +1,32 @@
-# Time Complexity : O(n)
-# Space Complexity : O(n)
-#
-# 기본아이디어 :
-# 1) Dictionary 사용 (Hash)
-# 2) 이전 Node와 다음 Node 연결해야되니까 prev Node 개념 있어야
+'''
+Time Complexity : O(n)
+Space Complexity : O(n)
 
-#LinkedList 나오면
-# 1) Node Class 선언 (self.val, self.next)
-# 2) LinkedList Class 선언 (self.head)
-# 3) LinkedList Class 중 __init__, add, printlist 메소드 선언
+*remove duplicate Outline :
+1) use Dictionary (Hash)
+2) use prev Node (to link with previous and next node)
+
+*Python
+1) Dictionary (order doesn't always match)
+dict = {
+    'one':1,
+    'two':2
+}
+dict['one']=11 #change
+dict['three']=3 #add
+del(dict['one'])
+print(dict.pop('two')) #remove. return the first index
+
+for key in ages.keys():
+    print(key)
+for value in ages.values():
+    print(value)
+for key in ages:
+    print('{} age : {}.'.format(key, ages[key]))
+for key, value in ages.items():
+    print('{} age :{}.'.format(key, value))
+'''
+
 
 class Node:
     def __init__(self,item):

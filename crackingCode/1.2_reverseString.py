@@ -1,7 +1,8 @@
-# Python 메소드
-# 1) for ch in str :
-# str 문자열의 각 문자를 for loop을 돌면서 받는다.
-
+'''
+Python
+1) for ch in str :
+get each char in String str
+'''
 
 #Method 1 (but too easy for the interview)
 def reverseString(str):
