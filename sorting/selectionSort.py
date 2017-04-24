@@ -1,8 +1,9 @@
-# Worst case performance : O(n^2)
-# Best case performance : O(n^2)
-# Average case performance : O(n^2)
-# Worst case space complexity : O(n), O(1) auxiliary (=Minimum value)
-
+'''
+Worst case performance : O(n^2)
+Best case performance : O(n^2)
+Average case performance : O(n^2)
+Worst case space complexity : O(n), O(1) auxiliary (=Minimum value)
+'''
 def selectionSort(input):
     for i in range(len(input)-1) : #skip the last element(will automatically be the largest)
         idx_min = i
