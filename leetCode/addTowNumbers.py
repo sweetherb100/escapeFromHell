@@ -14,6 +14,7 @@ TestCase:
 2) l1 is longer (or l2 is longer)
 
 '''
+
 class Node:
     def __init__(self,item):
         self.val = item
