@@ -1,6 +1,21 @@
-#partition a linked list given a pivot value
-# pivot value 기준으로 작은 값은 pivot 왼쪽, 큰 값은 pivot 오른쪽
-# 기본 아이디어 : pre, post 2개의 linkedlist를 만들어서 순회하기
+'''
+*Question : partition a linked list given a pivot value
+put smaller element than pivot to left, bigger element than pivot to right 
+(Eventually make one linkedlist not divided linkedlists?)
+
+*Idea :
+1) Make pre, post 2 linkedlist and traverse
+(Partition : just make two linkedlist)
+2) then connect pre, pivot value, post linkedlist
+
+*LinkedList Tip :
+1) Make getHead method(return self.head) to be used outside of class
+2) After cur = pre.getHead() and moving cur to the end and connect sth, 
+ eventually pre linkedlist will have different form and pre.getHead() still returns the head regardless of cur 
+ 
+*Python :
+1) def outside of class : inside def, initialize class (cannot use self)
+'''
 
 class Node:
     def __init__(self,item):
@@ -28,25 +43,26 @@ class LinkedList:
     def getHead(self):
         return self.head
 
-#LinkedList class 밖에 있어야 하는 메소드. 따라서 self의 개념이 없다.
+#def outside of class : inside def, initialize class (cannot use self)
 def solution(ll,key):
     cur=ll.getHead()
     pre=None
     post=None
     while cur is not None:
         if cur.val != key:
-            if cur.val > key:
+            if key < cur.val:
                 if post is None:
-                    post=LinkedList(cur.val)
+                    post=LinkedList(cur.val) #initialize
                 else:
                     post.add(cur.val)
-            elif cur.val <key:
+            elif cur.val < key:
                 if pre is None:
-                    pre=LinkedList(cur.val)
+                    pre=LinkedList(cur.val) #initialize
                 else:
                     pre.add(cur.val)
         cur=cur.next
 
+    # connect pre, pivot value, post linkedlist
     cur=pre.getHead()
     while cur.next is not None:
         cur=cur.next

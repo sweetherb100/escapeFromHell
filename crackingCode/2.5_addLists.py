@@ -1,4 +1,14 @@
-# Add two numbers represented by linkedlist and return int result value
+'''
+*Question : Add two numbers represented by linkedlist and return int result value 
+
+*Python :
+1) def outside of class : inside def, initialize class (cannot use self)
+2) (v1.val+v2.val) //10 : divide
+
+*LinkedList Tip :
+1) Make getHead method(return self.head) to be used outside of class
+'''
+
 
 class Node:
     def __init__(self,item):
@@ -32,19 +42,19 @@ def solution(list1, list2):
     v2=list2.getHead()
     carry =0
     while v1 is not None and v2 is not None:
-        val = ((v1.val+v2.val)%10) + carry #이것까지 더해서 10이될수있지않을까?
+        # val = ((v1.val+v2.val)%10) + carry #way1 #this can return 10 and it is okay
+        val = ((v1.val + v2.val+carry) % 10)  #way2
         # 9 - 8 - 2
         # 1 - 1 - 3
+       #c 0 - 1 - 0
         # result :
         # 0 + 0 + 6 (600) (X)
         # 0 + 10 + 5 (600) (O)
-        # 내가 오해했던 부분 : string으로 처리하는게 아니라 어차피 int로 추후 변환할것이기 때문에
-        # 꼭 1의 자리수가 맞추어져서 나올 필요없다.
-        # ex)carry : 0, val : 10으로 나와도 괜춘
+        # Misunderstanding : doesn't return String but int. So doesn't have to return val into unit's digit
+        # ex)carry : 0, val : 10 is okay
 
-        carry =(v1.val+v2.val) //10
-        # print('carry : ',carry)
-        # print('val : ',val)
+        # carry =(v1.val+v2.val) //10  #way1
+        carry = (v1.val + v2.val+carry) // 10 #way2
         v1.val = val
         v1=v1.next
         v2=v2.next
@@ -62,7 +72,7 @@ def solution(list1, list2):
     cur=list1.getHead()
     val=0
     mul=1
-    #return int result.(그래서 string append 대신에 int값으로 만들어줘서 return)
+    #return int (dont need to use string append)
     while cur is not None:
         val=val+(cur.val*mul)
         mul=mul*10
@@ -70,14 +80,13 @@ def solution(list1, list2):
     return val
 
 
-list1 = LinkedList(7)
+list1 = LinkedList(7) #7-1-7
 list1.add(1)
-list1.add(7) #1012
-# list1.add(5)
+list1.add(7)
 
-list2 = LinkedList(5)
+list2 = LinkedList(5) #5-9-2-3
 list2.add(9)
-list2.add(2) #1012
+list2.add(2)
 list2.add(3)
 
 print(solution(list1,list2))

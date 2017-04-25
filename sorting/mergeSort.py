@@ -1,14 +1,21 @@
-# performance : O(n logn)
-# -> 반으로 쪼개는 과정 : O (log n), 비교하여 합치는 과정 : O(n)
-# space complexity : O(n)
-#
-# Step 1 : 정렬되어 있지 않은 리스트를 하나의 원소가 남을 때까지 반씩 쪼개기 (Divide)
-#  Step 2 : 재귀함수 (Conquer)
-# Step 3 : 쪼개어진 값을 비교를 하여 정렬된 아이템으로 병합 (Combine)
+'''
+performance : O(n logn)
+-> Divide  : O (log n), Compare and Combine : O(n)
+space complexity : O(n)
+
+*Process
+1) Divide in half until unsorted list has only one element
+2) Conquer (Recursive)
+3) Compare divided element and Combine
+
+*Python
+1) len(alist)//2 : divde (not /)
+
+'''
 
 def mergesort(alist):
 
-    #Step 1: Devide
+    #Step 1: Divide
     if len(alist)>1:
         mid = len(alist)//2
         lefthalf = alist[:mid]

@@ -1,7 +1,11 @@
-#palindrome : 앞에서부터 읽을 때와 뒤에서부터 읽을때 같을 경우
-#cf) anagram : 2개의 string이 서로 순열관계인지. (문자열 바꿔서 서로 같으면 TRUE)
-#기본 아이디어 : linkedlist 2개 중 하나를 reverse 시켜서 서로 같으면 TRUE
-# ***linkedlist reverse 문제
+'''
+*Question : palindrome (if string and reversed string are the same)
+(linkedlist reverse question)
+cf) anagram : if two strings are permutation to each other
+
+*Idea : 
+Between 2 linkedlist, reverse one and check whether it is the same
+'''
 
 class Node:
     def __init__(self,item):
@@ -34,7 +38,7 @@ class LinkedList:
             cur.next=prev
             prev=cur
             cur=next
-        self.head=prev #head 다시 재설정
+        self.head=prev #reset self.head
 
 def solution(list):
     input=list.printlist()

@@ -1,7 +1,9 @@
-# 기본 아이디어  : 2개의 포인터 사용
-# Step 1: kth 만큼 2번째 포인터 옮기기
-# Step 2: 2번째 포인터.next가 null일 때까지 1번째 포인터와 2번째 포인터 같이 옮기기
-# Step 3: 1번째 포인터가 가르키는 값이 끝에서 n번째 값
+'''
+*Idea : use 2 pointers
+Step 1: Move 2nd pointer kth right
+Step 2: Move 1st, 2nd pointer to right until 2nd pointer.next is null
+Step 3: 1st pointer value is kth element from last
+'''
 
 class Node:
     def __init__(self,item):
@@ -30,9 +32,9 @@ class LinkedList:
         p1=self.head
         p2=self.head
         if k!=0:
-            for i in range(k): #k만큼 for loop을 돈다
+            for i in range(k):
                 p2=p2.next
-                #over flow k is greater than linkedlist length
+                #overflow. k is greater than linkedlist length
                 if p2 is None:
                     return None
         #run until p2 reach the end

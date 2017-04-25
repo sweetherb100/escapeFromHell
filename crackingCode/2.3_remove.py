@@ -21,18 +21,18 @@ class LinkedList:
             cur=cur.next
         return result
 
-    def remove(self,item): #경우 3가지 remove 대상이 1)첫번째 node일 때 2)중간 노드일 때 3)마지막 노드일 때
-        if self.head.val == item: #1)첫번째 node일 때
+    def remove(self,item): #Three cases 1) first node 2)in between node 3)last node
+        if self.head.val == item: #1)first node
             self.head = self.head.next
             return
         else :
             cur=self.head
             while cur.next is not None:
-                if cur.val==item: #2) 중간 노드일 때
+                if cur.val==item: #2) in between node
                     self.removeItem(item)
                     return
 
-                if (cur.next.next is None) and cur.next.val == item: #3)마지막 노드일 때
+                if (cur.next.next is None) and cur.next.val == item: #3)last node
                     cur.next= None
                     return
                 cur=cur.next
