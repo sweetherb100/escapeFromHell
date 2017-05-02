@@ -1,4 +1,12 @@
-#Tree : Node의 구성체. 따라서 Node 클래스 별도로 만들어주어야
+'''
+*Question : Check whether a binary tree is balanced
+
+*Tree : consists of Node. make Node class and BinaryTree class
+
+*To think about 
+Assumption is binary tree, not binary search tree.
+is it okay to make tree in form of binary search tree?
+'''
 
 class Node:
     def __init__(self,item):

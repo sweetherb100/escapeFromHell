@@ -1,8 +1,14 @@
-#특징 : 트리를 inorder traverse로 순회하였을 때 ascending order이면 BST
+'''
+*Question : Implement an algorithm to find a given tree is Binary Search Tree
+(This implementation will always be BST since it is added to form BST)
 
-#python 메소드
-# 1) sorted(list) : return new_list of sorted list (for me, this is better)
-# 2) list.sort() : no return. sort list
+*Idea (BST criterion)
+When inorder traverse (LvR) a tree and if it is ascending order, then it is BST
+
+*Python
+1) sorted(list) : return new_list of sorted list (for me, this is better)
+2) list.sort() : no return. sort list
+'''
 
 class Node:
     def __init__(self,item):
@@ -40,9 +46,7 @@ class BinarySearchTree:
     def __inorder(self,cur):
         if cur.left is not None:
             self.__inorder(cur.left)
-
         self.inorder_list.append(cur.val)
-
         if cur.right is not None:
             self.__inorder(cur.right)
 
@@ -58,7 +62,7 @@ bt.add(1)
 bt.add(7)
 bt.inorder_traverse()
 
-#inorder_list가 sorted이면 BST
+#if inorder_list is sorted, then it is BST
 orig = bt.inorder_list
 comp = sorted(orig)
 print(orig)

@@ -1,13 +1,14 @@
-# preorder traverse (vLR)
-# preorder 언제사용하나?
-# 서버 여러 개 두고 사용할때
-# 한 서버에서 트리 구조를 다른 서버로 전달하고 싶을 때
-# preorder 순서대로 보낸다.
-#
-# inorder traverse(LvR)
-# O(n)의 시간 복잡도
-# 
-# postorder traverse(LRv)
+'''
+1) preorder traverse (vLR)
+When use preorder?
+: When there are multiple servers,
+send tree structure of one certain server to another server in preorder.
+
+2) inorder traverse(LvR)
+Time complexity : O(n)
+
+3) postorder traverse(LRv)
+'''
 
 class Node:
     def __init__(self,item):
@@ -23,7 +24,7 @@ class BinarySearchTree:
         self.inorder_list = []
         self.postorder_list = []
 
-    def add(self,item): #2가지 경우 1) Tree가 None인 경우 2) 아닌 경우
+    def add(self,item):
         if self.head.val is None:
             self.head.val = item
         else :
@@ -32,12 +33,12 @@ class BinarySearchTree:
     def __add_node(self, cur,item):
         if cur.val >= item:
             if cur.left is not None:
-                self.__add_node(cur.left,item) #재귀함수로 leaf node로 내려가기
+                self.__add_node(cur.left,item)
             else:
                 cur.left=Node(item)
         else :
             if cur.right is not None:
-                self.__add_node(cur.right,item) #재귀함수로 leaf node로 내려가기
+                self.__add_node(cur.right,item)
             else :
                 cur.right = Node(item)
 

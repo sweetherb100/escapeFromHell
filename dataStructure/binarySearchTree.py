@@ -1,16 +1,18 @@
-# Binary Search Tree(인터뷰때 반드시 알고있어야 됨)
-# 퍼포먼스 상당히 좋음
-# Recursion 개념도 확인 가능
-# Search, Delete, Insert : O(log n)
-# cf) LinkedList의 Search, Delete, Insert : O(n)으로 상당히 느림
-# 정의
-# 1) 왼쪽 부트리 노드는 부모 노드보다 작거나 같다.
-# 2) 오른쪽 부트리 노드는 부모 노드보다 크거나 같다.
-#
-# 특징
-# BST를 inorder traverse로 순회하면 ascending order로 sorting이 된다. (O(n))
-#
-# 트리 : 노드들의 구성체. 노드들이 서로 연결된 것
+'''
+* Binary Search Tree(MUST KNOW!!)
+1) good performance
+2) Recursion
+3) Search, Delete, Insert : O(log n)
+cf) LinkedList의 Search, Delete, Insert : O(n) (very slow)
+4) Tree : consists of Node. 
+
+*Definition
+1) left subtree node is smaller than or equal to parent node.
+1) right subtree node is bigger than or equal to parent node.
+
+*Binary Search Tree criterion
+:when inorder traverse (LvR) a tree and if it is ascending order, then it is BST
+'''
 
 class Node:
     def __init__(self,item):
@@ -24,7 +26,7 @@ class BinarySearchTree:
         self.head=Node(None)
         self.preorder_list = []
 
-    def search(self, item):  # 2가지 경우 1) Tree가 None인 경우 2) 아닌 경우
+    def search(self, item):
         if self.head.val is None:
             return False
         else:
@@ -36,16 +38,16 @@ class BinarySearchTree:
         else:
             if cur.val >= item:
                 if cur.left is not None:
-                    return self.__search_node(cur.left, item)  # 재귀함수로 leaf node로 내려가기
+                    return self.__search_node(cur.left, item)
                 else:
                     return False
             else:
                 if cur.right is not None:
-                    return self.__search_node(cur.right, item)  # 재귀함수로 leaf node로 내려가기
+                    return self.__search_node(cur.right, item)
                 else:
                     return False
 
-    def add(self,item): #2가지 경우 1) Tree가 None인 경우 2) 아닌 경우
+    def add(self,item):
         if self.head.val is None:
             self.head.val = item
         else :
@@ -54,19 +56,19 @@ class BinarySearchTree:
     def __add_node(self, cur,item):
         if cur.val >= item:
             if cur.left is not None:
-                self.__add_node(cur.left,item) #재귀함수로 leaf node로 내려가기
+                self.__add_node(cur.left,item)
             else:
                 cur.left=Node(item)
         else :
             if cur.right is not None:
-                self.__add_node(cur.right,item) #재귀함수로 leaf node로 내려가기
+                self.__add_node(cur.right,item)
             else :
                 cur.right = Node(item)
 
-# Remove 1 : Node to be removed has no child -> 그냥 없애면 됨
-# Remove 2 : Node to be removed has one child -> 부모를 죽이고, 할아버지와 연결
+# Remove 1 : Node to be removed has no child -> Just remove it
+# Remove 2 : Node to be removed has one child -> Kill parent, and link with grandparent
 # Remove 3 : Node to be removed has two children
-# -> 오른쪽에 있는 서브트리의 가장 왼쪽 노드와 자리 바꿔주기
+# -> change with the very left node of left subtree
 
     def remove(self,item):
         if self.head.val is None:
@@ -85,7 +87,7 @@ class BinarySearchTree:
             else:
                 self.head.val=self.__most_left_val_from_right_node(self.head.right).val
                 self.__removeitem(self.head, self.head.right, self.head.val)
-                #self.head 기준으로 right 부트리 방향으로 노드를 지워라
+                #Remove node of self.head's right subtree
         else:
             if self.head.val > item:
                 self.__remove(self.head, self.head.left, item)
@@ -124,23 +126,23 @@ class BinarySearchTree:
             else:
                 self.__remove(cur, cur.right, item)
 
-    def __most_left_val_from_right_node(self,cur): #cur : 오른쪽 부트리 node값이 넘어온다.
+    def __most_left_val_from_right_node(self,cur): #cur : eventually, right subtree node will come
         if cur.left is None:
             return cur
         else:
-            return self.__most_left_val_from_right_node(cur.left) #재귀함수
+            return self.__most_left_val_from_right_node(cur.left)
 
     def __removeitem(self,parent,cur,item):
-        if cur.val==item: #parent의 바로 자식 노드가 item 일 경우
+        if cur.val==item:
             if parent.left==cur:
                 parent.left=None
             else:
                 parent.right=None
         else:
             if cur.val>item:
-                self.__removeitem(cur,cur.left,item) #재귀함수
+                self.__removeitem(cur,cur.left,item)
             else :
-                self.__removeitem(cur,cur.right,item) #재귀함수
+                self.__removeitem(cur,cur.right,item)
 
     def preorder_traverse(self):
         if self.head is not None:
