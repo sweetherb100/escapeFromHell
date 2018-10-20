@@ -17,7 +17,7 @@ class Node:
 
 class LinkedList:
     def __init__(self,item):
-        self.head=Node(item)
+        self.head=Node()
 
     def add(self,item):
         cur=self.head
