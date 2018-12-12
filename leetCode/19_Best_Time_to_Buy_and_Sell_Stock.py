@@ -20,8 +20,23 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # didn't use reverse but started from the back!
 
-        prices.reverse()
+        profit = 0  # initial is 0 (no transaction is done if there is no profit
+        for i in range(len(prices) - 1, -1, -1):  # starting from the back
+            for j in range(i - 1, -1, -1):
+                if profit < prices[i] - prices[j]:
+                    profit = prices[i] - prices[j]
+
+        return profit
+
+
+
+solution = Solution()
+print(solution.maxProfit([7,1,5,3,6,4]))
+
+'''
+prices.reverse()
         print(prices)
 
         #SIMILAR TO 10_Maximum_Subarray.py
@@ -33,6 +48,4 @@ class Solution(object):
                     print(prices[i]-prices[j])
 
         return max
-
-solution = Solution()
-print(solution.maxProfit([7,1,5,3,6,4]))
+'''

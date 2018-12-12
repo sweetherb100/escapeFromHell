@@ -31,14 +31,14 @@ class Solution(object):
         # else:
         #	return self.climbStairs(n-1) + self.climbStairs(n-2)
 
-        f2 = 1
-        f1 = 2
+        f2 = 1 #old
+        f1 = 2 #new
         for i in range(n - 2):
-            f = f1 + f2 #new one
-            f2 = f1 #old, old one
-            f1 = f #old one
+            f = f1 + f2 #new
+            f2 = f1 #old becomes x_new
+            f1 = f #new becomes new
 
         return f
 
 solution = Solution()
-print(solution.climbStairs(4))
+print(solution.climbStairs(5))

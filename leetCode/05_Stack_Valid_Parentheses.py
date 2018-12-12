@@ -28,35 +28,21 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        #approach: 1) make str into list, 2)
-        inputList = list(s)
-        stack=[]
-        parenList = {'{': '}',
-                     '[': ']',
-                     '(': ')'}
+        dicmap = {'(': ')',
+                  '[': ']',
+                  '{': '}'}
 
-        numlist=[1,2,3,4,5,6]
-        print(numlist.pop()) #6
-
-        wintable = { #the one infront can win the end
-            'scissors':'paper',
-            'rock':'scissors',
-            'paper':'rock'
-        }
-        print(wintable['scissors']) #paper
-
-        print(parenList.keys())
-        print(parenList.values())
+        print(dicmap.keys())
+        print(dicmap.values())
+        stack = []  # FILO
 
         try:
-            for data in inputList:
-                if data in parenList.keys():
-                    stack.append(data)
-                if data in parenList.values():
-                    if parenList[stack.pop()] != data:
-                        return False  # 'Wrong. Parenthesis not matching'
-                        break
-
+            for i in range(len(s)):
+                if s[i] in dicmap.keys():
+                    stack.append(s[i])  # same as push
+                if s[i] in dicmap.values():  # pop
+                    if dicmap[stack.pop()] is not s[i]:
+                        return False
 
         except:
             return False  # IndexError: pop from empty list (sth wrong at the end)
@@ -67,3 +53,15 @@ class Solution(object):
         return True
 solution = Solution()
 print(solution.isValid("([)]"))
+
+'''
+numlist=[1,2,3,4,5,6]
+print(numlist.pop()) #6
+
+wintable = { #the one infront can win the end
+    'scissors':'paper',
+    'rock':'scissors',
+    'paper':'rock'
+}
+print(wintable['scissors']) #paper
+'''

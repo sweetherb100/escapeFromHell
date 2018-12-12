@@ -23,14 +23,28 @@ class Solution(object):
         :type n: int
         :rtype: void Do not return anything, modify nums1 in-place instead.
         """
+        for i in range(m, len(nums1), 1):
+            nums1[i] = nums2[i - m]
 
+        print(nums1)  # [1, 2, 3, 2, 5, 6]
+
+        ### bubble sort!
+        for i in range(len(nums1) - 1):
+            for j in range(len(nums1) - i - 1):
+                if nums1[j] > nums1[j + 1]:
+                    nums1[j], nums1[j + 1] = nums1[j + 1], nums1[j] #swap
+
+        print(nums1)
+
+
+
+solution = Solution()
+print(solution.merge([1,2,3,0,0,0],3,[2,5,6],3))
+'''
         for i in range(n):
             nums1[m+i]=nums2[i]
         print(nums1)
 
         #and then, sort
         nums1.sort()
-        print(nums1)
-
-solution = Solution()
-print(solution.merge([1,2,3,0,0,0],3,[2,5,6],3))
+'''

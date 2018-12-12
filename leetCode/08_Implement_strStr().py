@@ -22,7 +22,16 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
+        if needle in haystack :
+            return haystack.find(needle)
 
+        return -1
+
+solution = Solution()
+print(solution.strStr("hello","llo"))
+
+
+'''
         if len(haystack) ==0 : #empty string
             return 0
 
@@ -36,6 +45,4 @@ class Solution(object):
             for index in range(len(haystack)):
                 if haystack[index:index+sublen] == needle:
                     return sublen
-
-solution = Solution()
-print(solution.strStr("hello","llo"))
+'''

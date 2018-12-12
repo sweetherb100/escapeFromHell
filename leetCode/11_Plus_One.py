@@ -20,6 +20,21 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
+        for i in range(len(digits)-1,-1,-1): #starting from the back
+            if digits[i] !=9:
+                digits[i]=digits[i]+1 #1: either carry for the rest OR +1 for the first digit
+                break
+            else: #9
+                digits[i]=0
+
+        return digits
+
+
+solution = Solution()
+print(solution.plusOne([4,3,2,1]))
+
+
+'''
         num=""
         for i in range(len(digits)):
             num=num+str(digits[i])
@@ -32,7 +47,4 @@ class Solution(object):
             numlist.append(int(strnum[i]))
 
         return numlist
-
-
-solution = Solution()
-print(solution.plusOne([4,3,2,1]))
+'''

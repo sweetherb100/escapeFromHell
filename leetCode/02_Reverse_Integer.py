@@ -24,6 +24,43 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
+
+        if (x < -231 or x > (231 - 1)):
+            print("out of range")
+            return 0
+
+        sign = True
+
+        if (x < 0):
+            sign = False
+            x = -x  # change x as positive for now
+
+        lennum = len(str(x))
+        digit = []
+        temp = x
+        for i in range(lennum - 1, -1, -1):  # 2,1,0
+            dig = int(temp / (10 ** i))  # quotient
+            print(dig)
+            digit.append(dig)
+            temp = temp - (dig * (10 ** i))
+
+        print(digit)
+
+        temp = 0
+        for i in range(lennum - 1, -1, -1):  # 2,1,0
+            temp = temp + digit[i] * (10 ** i)
+
+        if sign is False:
+            temp = -temp
+
+        print(temp)
+        return temp
+
+solution = Solution()
+print(solution.reverse(-153))
+
+
+'''
         if x >231-1 or x <-231 :
             return 0
 
@@ -59,6 +96,4 @@ class Solution(object):
         #     digitstr=digitstr+digits[i]
         # print(digitstr)
         # return int(digitstr)*sign
-
-solution = Solution()
-print(solution.reverse(-153))
+'''

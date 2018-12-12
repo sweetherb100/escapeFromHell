@@ -19,6 +19,29 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        print(len(s))
+
+        #re-save the string with only alphabet
+        alphastr=[]
+        for i in range(len(s)):
+            if (ord(s[i].lower()) >=97 and ord(s[i].lower()) <= 122):
+                alphastr.append(s[i].lower())
+
+        print(alphastr)
+        print(int(len(alphastr)/2))
+
+        #don't use reverse but compare from the back!
+        for i in range(int(len(alphastr)/2)):
+            if alphastr[i] != alphastr[len(alphastr)-1-i]: #SHOULD NOT USE "IS NOT"
+                return False
+
+        return True
+
+
+solution = Solution()
+print(solution.isPalindrome("A man, a plan, a canal: Panama"))
+
+'''
         strlist=list(s)
         print(ord("a"))
         resultlist=[]
@@ -38,7 +61,4 @@ class Solution(object):
             return True
         else:
             return False
-
-
-solution = Solution()
-print(solution.isPalindrome("A man, a plan, a canal: Panama"))
+'''
