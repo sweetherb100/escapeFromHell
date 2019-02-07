@@ -20,32 +20,27 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        # didn't use reverse but started from the back!
+        #[7, 1, 5, 3, 6, 4]
+        bestprofit = 0  # initial is 0 (no transaction is done if there is no profit)
+        bestindex = len(prices)-1
 
-        profit = 0  # initial is 0 (no transaction is done if there is no profit
+        # OPTIMIZED USING 1 FOR LOOP
+        # keeping bestindex (from the back) and keeping bestprofit
         for i in range(len(prices) - 1, -1, -1):  # starting from the back
-            for j in range(i - 1, -1, -1):
-                if profit < prices[i] - prices[j]:
-                    profit = prices[i] - prices[j]
+            if (prices[i]-prices[i-1] > prices[bestindex]-prices[i-1]) and (prices[i]-prices[i-1] > bestprofit):
+                bestindex=i
+                bestprofit = prices[i]-prices[i-1]
 
-        return profit
+            elif prices[bestindex]-prices[i-1] > bestprofit:
+                bestprofit = prices[bestindex] - prices[i - 1]
+
+            print("bestprofit :" + str(bestprofit))
+            print("bestindex :" + str(bestindex))
+
+
+        return bestprofit
 
 
 
 solution = Solution()
 print(solution.maxProfit([7,1,5,3,6,4]))
-
-'''
-prices.reverse()
-        print(prices)
-
-        #SIMILAR TO 10_Maximum_Subarray.py
-        max=0
-        for i in range(len(prices)):
-            for j in range(i+1,len(prices),1):
-                if max < (prices[i]-prices[j]):
-                    max=prices[i]-prices[j]
-                    print(prices[i]-prices[j])
-
-        return max
-'''

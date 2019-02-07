@@ -27,29 +27,20 @@ for (int i = 0; i < len; i++) {
 '''
 
 class Solution(object):
+    #should change the list by reference and shouldn't use extra space (in-place)
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        resultlist=[nums[0]]
-        for i in range(1, len(nums)):
-            if nums[i] in resultlist:
-                continue
-            else :
-                resultlist.append(nums[i])
 
-        print(resultlist)
-        return len(resultlist)
+        for i in range(len(nums)-1, 0, -1): #starting from the back
+            if nums[i] == nums[i-1]:
+                nums.pop(i)
+
+        print(nums)
+        return len(nums)
+
 
 solution = Solution()
 print(solution.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
-
-'''
-        #with list, i can use pop
-        for index in range(len(nums)-1,0,-1): #start from the last index, stop at index 1
-            if nums[index] == nums[index-1]:
-                nums.pop(index)
-
-        return len(nums)
-'''

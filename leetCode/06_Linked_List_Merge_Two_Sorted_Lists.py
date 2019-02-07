@@ -4,57 +4,77 @@ Example:
 
 Input: 1->2->4, 1->3->4
 Output: 1->1->2->3->4->4
-
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
 '''
 
 
-# Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+class Node:
+    def __init__(self,item):
+        self.val =item
+        self.next=None
 
-#WORKS IN LEETCODE (LINKED LIST ALREADY DEFINED!!)
-class Solution(object):
-    def mergeTwoLists(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
 
-        if l1.val < l2.val:
-            resultlink = ListNode(l1.val)
-            l1 = l1.next
+class LinkedList:
+    def __init__(self,item):
+        self.head = Node(item)
+
+    def add(self,item):
+        cur=self.head
+        while cur.next is not None:
+            cur=cur.next
+        cur.next=Node(item)
+
+    def printlist(self):
+        cur=self.head
+        result=[]
+        while cur is not None:
+            result.append(cur.val)
+            cur=cur.next
+        return result
+
+    def getHead(self):
+        return self.head
+
+    def mergeTwoLists(self, list1, list2):
+        cur1=list1.head
+        cur2=list2.head
+
+        if cur1.val <= cur2.val:
+            resultlist=LinkedList(cur1.val)
+            cur1=cur1.next
         else:
-            resultlink = ListNode(l2.val)
-            l2 = l2.next
+            resultlist=LinkedList(cur2.val)
+            cur2 = cur2.next
 
-            headlink = resultlink  # linkedList should save the head
-
-        while l1 is not None and l2 is not None:
-            if l1.val < l2.val:
-                temp = ListNode(l1.val)
-                resultlink.next = temp
-                resultlink = resultlink.next
-                l1 = l1.next
+        while cur1 is not None and cur2 is not None: #AND
+            if cur1.val <= cur2.val:
+                resultlist.add(cur1.val)
+                cur1=cur1.next
             else:
-                temp = ListNode(l2.val)  # next is again ListNode itself
-                resultlink.next = temp
-                resultlink = resultlink.next
-                l2 = l2.next
+                resultlist.add(cur2.val)
+                cur2 = cur2.next
 
-        if l1 is not None:
-            resultlink.next = l1
-        if l2 is not None:
-            resultlink.next = l2
+        #good thing about add is that I don't have to send the linkedlist to the end but add function will do it for me!
+        while cur1 is not None:
+            resultlist.add(cur1.val)
+            cur1=cur1.next
 
-        return headlink
+        while cur2 is not None:
+            resultlist.add(cur2.val)
+            cur2 = cur2.next
 
-solution = Solution()
-headlink=solution.mergeTwoLists(l1,l2)
+        return resultlist.printlist()
+
+
+
+
+
+
+# 2 sorted list
+list1 = LinkedList(1)
+list1.add(2)
+list1.add(4)
+
+list2 = LinkedList(1)
+list2.add(3)
+list2.add(4)
+print(list1.mergeTwoLists(list1, list2))

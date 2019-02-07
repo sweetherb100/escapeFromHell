@@ -5,8 +5,6 @@
 1) def outside of class : inside def, initialize class (cannot use self)
 2) (v1.val+v2.val) //10 : divide
 
-*LinkedList Tip :
-1) Make getHead method(return self.head) to be used outside of class
 '''
 
 
@@ -36,7 +34,60 @@ class LinkedList:
     def getHead(self):
         return self.head
 
+    def addLists(self, list1, list2): #at least can calculate from the front
+        cur1=list1.head
+        cur2=list2.head
+        carry=0
+        ### MADE SO MANY TRIVIAL MISTAKES...
+        while cur1 is not None:
+            temp=cur1.val+cur2.val+carry
+            if temp > 9:
+                carry=1
+            else:
+                carry=0
 
+            cur2.val = (temp) % 10
+            cur1=cur1.next
+            cur2=cur2.next
+
+        while cur2 is not None:
+            temp = cur2.val + carry
+            if temp > 9:
+                carry=1
+            else:
+                carry=0
+            cur2.val = (temp) % 10
+            cur2 = cur2.next
+
+        return list2.printlist()
+
+
+
+list1 = LinkedList(7) #7-1-7
+list1.add(1)
+list1.add(7)
+list2 = LinkedList(5) #5-9-2-3
+list2.add(9)
+list2.add(2)
+list2.add(3)
+#result : 2104
+print(list1.addLists(list1, list2))
+#print(solution(list1,list2))
+
+
+
+list1 = LinkedList(9)
+list1.add(8)
+list1.add(2)
+list2 = LinkedList(1)
+list2.add(1)
+list2.add(3)
+print(list1.addLists(list1, list2))
+# print(solution(list1,list2))
+
+
+
+'''
 def solution(list1, list2):
     v1=list1.getHead()
     v2=list2.getHead()
@@ -78,26 +129,4 @@ def solution(list1, list2):
         mul=mul*10
         cur=cur.next
     return val
-
-
-list1 = LinkedList(7) #7-1-7
-list1.add(1)
-list1.add(7)
-
-list2 = LinkedList(5) #5-9-2-3
-list2.add(9)
-list2.add(2)
-list2.add(3)
-
-print(solution(list1,list2))
-
-
-# list1 = LinkedList(9)
-# list1.add(8)
-# list1.add(2)
-#
-# list2 = LinkedList(1)
-# list2.add(1)
-# list2.add(3)
-#
-# print(solution(list1,list2))
+'''

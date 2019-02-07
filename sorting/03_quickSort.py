@@ -18,20 +18,24 @@ def quickSort(list,start,end):
         pivot = partition(list,start,end)
         quickSort(list,start,pivot-1)
         quickSort(list,pivot+1,end)
+
     return list
 
 def partition(list,start,end):
     pivot=end
     wall=start
     left=start
-    while left<pivot: #repeat until left item hit the end of list
+    while left<pivot: #stop when left=pivot (until left item hit the end of list)
         #if pivot item is bigger than element, swap left item with wall and move wall to right
+        #swap the element and update the index at the same time
         if list[left]<list[pivot]:
             list[wall], list[left] =list[left],list[wall]
             wall = wall+1
         left=left+1
+
     #when left hit the end of list, swap pivot with wall
     #left part of wall is smaller than pivot, and right part of wall is bigger than pivot.
+    # swap the element and update the index at the same time
     list[wall],list[pivot]=list[pivot],list[wall]
     pivot=wall
     return pivot

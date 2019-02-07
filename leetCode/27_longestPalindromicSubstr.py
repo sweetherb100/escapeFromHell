@@ -2,12 +2,45 @@
 *Question : 
 Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 ex) babad -> bab (aba)
-babadb, babab
+babaab, babab
 cbbd -> bb
+baabdd -> baab
+babababab
+
 '''
 
 class Solution(object):
+    #use dict to save the first visited index
     def longestPalindrome(self, s):
+
+        dict={}
+        maxlength=0
+        result=""
+
+        for i in range(len(s)):
+            if s[i] not in dict:
+                dict[s[i]]=i #save index of first visited
+                ### should compare from the first
+
+            else: #is s[i] in dict
+                print(s[dict[s[i]]: i + 1])
+                print(s[i: dict[s[i]] -1 : -1])
+                print("**************")
+                if s[ dict[s[i]] : i+1 ] == s [ i : dict[s[i]]-1 : -1]: #should +1 and should -1; if it is paalindrome
+
+                    if len(s[ dict[s[i]] : i+1]) > maxlength: #should +1 because should include the last index i as well
+                        maxlength=len(s[ dict[s[i]] : i+1]) #update maxlength
+                        result = s[ dict[s[i]] : i+1] #update result
+
+        return result
+
+
+sl=Solution()
+print(sl.longestPalindrome("babababab"))
+
+
+
+'''
         result = ""
         for i in range(len(s)):
             if s[i] in s[:i] + s[i + 1:]:
@@ -23,37 +56,7 @@ class Solution(object):
                         print(result)
                         break
                     else:
-                        lastindex = s[i:lastindex].rfind(s[i])  # excluding the lastindex to update
+                        lastindex = s[i:lastindex].rfind(s[i])  # excluding the last index to update
 
         print(result)
-
-
-sl=Solution()
-print(sl.longestPalindrome("babab"))
-
-'''
-string = "abcde"
-print(string[0:3]) #abc
-
-res = ""
-for i in range(len(s)):
-    # odd case, like "aba"
-    tmp = self.compare(s, i, i)
-    if len(tmp) > len(res):
-        res = tmp
-    # even case, like "abba"
-    tmp = self.compare(s, i, i + 1)
-    if len(tmp) > len(res):
-        res = tmp
-return res
-
-
-# get the longest palindrome, l, r are the middle indexes
-# from inner to outer
-def compare(self, s, l, r):
-    while l >= 0 and r < len(s) and s[l] == s[r]:
-        l -= 1
-        r += 1
-    return s[l + 1:r]  # restore l since it has been -1. (keep r since it will return until r-1 index)
-
 '''

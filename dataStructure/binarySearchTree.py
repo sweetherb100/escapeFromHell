@@ -26,26 +26,29 @@ class BinarySearchTree:
         self.head=Node(None)
         self.preorder_list = []
 
+
     def search(self, item):
         if self.head.val is None:
             return False
         else:
             return self.__search_node(self.head, item)
 
+
     def __search_node(self, cur, item):
         if cur.val == item:
             return True
         else:
-            if cur.val >= item:
+            if item <= cur.val:
                 if cur.left is not None:
-                    return self.__search_node(cur.left, item)
-                else:
+                    return self.__search_node(cur.left, item) #recursive
+                else: #if cur.left is None, don't exist
                     return False
-            else:
+            else: #cur.val <= item
                 if cur.right is not None:
-                    return self.__search_node(cur.right, item)
-                else:
+                    return self.__search_node(cur.right, item) #recursive
+                else: #if cur.right is None, don't exist
                     return False
+
 
     def add(self,item):
         if self.head.val is None:
@@ -53,17 +56,19 @@ class BinarySearchTree:
         else :
             self.__add_node(self.head,item)
 
+
     def __add_node(self, cur,item):
-        if cur.val >= item:
+        if item <= cur.val :
             if cur.left is not None:
-                self.__add_node(cur.left,item)
-            else:
+                self.__add_node(cur.left,item) #recursive
+            else: #if cur.left is None, add
                 cur.left=Node(item)
-        else :
+        else : #cur.val <= item
             if cur.right is not None:
-                self.__add_node(cur.right,item)
-            else :
+                self.__add_node(cur.right,item) #recursive
+            else : #if cur.right is None, add
                 cur.right = Node(item)
+
 
 # Remove 1 : Node to be removed has no child -> Just remove it
 # Remove 2 : Node to be removed has one child -> Kill parent, and link with grandparent
@@ -73,6 +78,7 @@ class BinarySearchTree:
     def remove(self,item):
         if self.head.val is None:
             print("there is no item:in BST",item)
+
         if self.head.val==item:
             # 1) Node to be removed has no children
             if self.head.left is None and self.head.right is None:
@@ -88,15 +94,18 @@ class BinarySearchTree:
                 self.head.val=self.__most_left_val_from_right_node(self.head.right).val
                 self.__removeitem(self.head, self.head.right, self.head.val)
                 #Remove node of self.head's right subtree
+
         else:
-            if self.head.val > item:
+            if item < self.head.val:
                 self.__remove(self.head, self.head.left, item)
-            else :
+            else : #self.head.val < item
                 self.__remove(self.head, self.head.right, item)
 
-    def __remove(self, parent, cur, item):
+
+    def __remove(self, parent, cur, item): #should always keep parent and child node together!!
         if cur is None:
             print ("There is no item: ", item)
+
         if cur.val == item:
             # 1) Node to be removed has no children.
             if cur.left is None and cur.right is None:
@@ -120,11 +129,14 @@ class BinarySearchTree:
             else:
                 cur.val = self.__most_left_val_from_right_node(cur.right).val
                 self.__removeitem(cur, cur.right, cur.val)
+
         else:
-            if self.head.val > item:
+            if item < cur.val: #item < self.head.val: ISN'T THIS WRONG???
                 self.__remove(cur, cur.left, item)
-            else:
+            else: #cur.val < item
                 self.__remove(cur, cur.right, item)
+
+
 
     def __most_left_val_from_right_node(self,cur): #cur : eventually, right subtree node will come
         if cur.left is None:
@@ -132,21 +144,25 @@ class BinarySearchTree:
         else:
             return self.__most_left_val_from_right_node(cur.left)
 
-    def __removeitem(self,parent,cur,item):
+
+    def __removeitem(self,parent,cur,item): #should always keep parent and child node together!!
         if cur.val==item:
             if parent.left==cur:
                 parent.left=None
             else:
                 parent.right=None
+
         else:
-            if cur.val>item:
+            if item < cur.val:
                 self.__removeitem(cur,cur.left,item)
-            else :
+            else : #cur.val < item
                 self.__removeitem(cur,cur.right,item)
+
 
     def preorder_traverse(self):
         if self.head is not None:
             self.__preorder(self.head)
+
 
     def __preorder(self, cur):
         self.preorder_list.append(cur.val)

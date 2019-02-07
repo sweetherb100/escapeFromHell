@@ -1,5 +1,36 @@
-#3.26 algorithm Question
-def alternate(number): #string으로 생각할까?
+import math
+from collections import deque
+
+def putCommaAtNum(number):
+    result=""
+    len = int(math.log10(number)) #6 digits
+    #queue=deque()
+    queue = ""
+    round=0
+    for i in range(len,-1,-1):
+        if round ==3:
+            queue +=","
+            round=0
+
+        digit=int(number/pow(10,i)) #quotient, not remainder!!
+        print(pow(10,i))
+        print(digit)
+        queue += str(digit)
+        number=number-digit*pow(10,i)
+        round+=1
+
+        if i == 0:
+            print(number) #in the end, number is only the decimal part
+            queue += str(number)
+
+    print(queue)
+    return result
+
+
+putCommaAtNum(123456.78)
+
+
+def alternate(number):
 	result=""
 	list=[x for x in str(number)] #int(x)시에 '.' 인식 안됨
 	if '.' in list:
@@ -25,20 +56,7 @@ def alternate(number): #string으로 생각할까?
 	
 	result = halfResult + str(number)[index:]
 	print ('result : ',result)
-		
 
-#num=input()
-alternate(123456.78)
+#alternate(123456.78)
+#result :  123,456.78
 
-'''
-# 1,241,212,312.1123
-def comma(value) :
-    if (value.find(".") is -1) :
-        offset = len(value)
-    else :
-        offset = value.find(".")
-    for i in range(offset-3,0,-3) :
-        value = value[:i]+","+value[i:]
-    return value
-print(comma('1231.2334'))
-'''

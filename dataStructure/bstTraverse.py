@@ -31,15 +31,15 @@ class BinarySearchTree:
             self.__add_node(self.head,item)
 
     def __add_node(self, cur,item):
-        if cur.val >= item:
+        if item <= cur.val:
             if cur.left is not None:
                 self.__add_node(cur.left,item)
-            else:
+            else: #if cur.left is None
                 cur.left=Node(item)
-        else :
+        else : #cur.val <= item
             if cur.right is not None:
                 self.__add_node(cur.right,item)
-            else :
+            else : #if cur.right is None
                 cur.right = Node(item)
 
     def preorder_traverse(self):
@@ -48,11 +48,11 @@ class BinarySearchTree:
 
     def __preorder(self,cur):
         self.preorder_list.append(cur.val)
-        print(cur.val)
         if cur.left is not None:
             self.__preorder(cur.left)
         if cur.right is not None:
             self.__preorder(cur.right)
+
 
     def inorder_traverse(self):
         if self.head is not None:
@@ -62,7 +62,6 @@ class BinarySearchTree:
         if cur.left is not None:
             self.__inorder(cur.left)
         self.inorder_list.append(cur.val)
-        print(cur.val)
         if cur.right is not None:
             self.__inorder(cur.right)
 
@@ -76,7 +75,6 @@ class BinarySearchTree:
         if cur.right is not None:
             self.__postorder(cur.right)
         self.postorder_list.append(cur.val)
-        print(cur.val)
 
 
 bt = BinarySearchTree()
@@ -89,15 +87,21 @@ bt.add(7)
 #    3     7
 # 1     4
 
-bt.preorder_traverse() #vLR
-# 5 3 1 4 7
 print("pre order")
-bt.inorder_traverse() #LvR
-# 1 3 4 5 7
+bt.preorder_traverse() #vLR
+print(bt.preorder_list)
+# 5 3 1 4 7
+
 print("in order")
-bt.postorder_traverse() #LRv
-# 1 4 3 7 5
+bt.inorder_traverse() #LvR
+print(bt.inorder_list)
+# 1 3 4 5 7
+
 print("post order")
+bt.postorder_traverse() #LRv
+print(bt.postorder_list)
+# 1 4 3 7 5
+
 
 
 

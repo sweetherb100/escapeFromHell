@@ -9,44 +9,51 @@ Testcase :
 '''
 
 class Solution:
+    # use Set to save visited char (find in vector takes more complexity)
+    # use vector of vector to save substr
     def lengthOfLongestSubstring(self, s):
-        result=0
+        hashSet=set()
+        listresult=[] #vector of vector
+        tempstr=""
+        result=""
 
-        for i in range(len(s)):
-            temp = []
-            temp.append(s[i])
-            for j in range(i+1,len(s),1):
-                if s[j] not in temp:
-                    temp.append(s[j])
-                else:
-                    if result < len(temp):
-                        result = len(temp)
-                        print(temp)
-                        break
+        for i in range(len(s)): #for loop in s: O(N)
+            if s[i] not in hashSet:
+                hashSet.add(s[i])
+                tempstr+=s[i]
+            else: #if s[i] in hashSet
+                listresult.append(tempstr) #save previous one
+                tempstr=s[i] #reset with new char
+                hashSet.clear()
+                hashSet.add(s[i]) #reset with new char
+
+        maxlen=0
+        for i in range(len(listresult)): #for loop in listresult: O(N)
+            if len(listresult[i]) > maxlen:
+                maxlen=len(listresult[i])
+                result=listresult[i]
 
         print(result)
 
 sl = Solution()
 print(sl.lengthOfLongestSubstring("pwwkew"))
 
-
-
 '''
-start = maxLength = 0
-        usedChar = {} #dictionary
+def lengthOfLongestSubstring(self, s):
+    result = 0
 
-        for i in range(len(s)):
-            if s[i] in usedChar and start <= usedChar[s[i]]:
-                start = usedChar[s[i]] + 1 #reset the starting point
+    OPTIMIZED 2 FOR LOOPS
+    for i in range(len(s)):
+        temp = []
+        temp.append(s[i])
+        for j in range(i + 1, len(s), 1):
+            if s[j] not in temp:
+                temp.append(s[j])
             else:
-                maxLength = max(maxLength, (i - start) + 1)
+                if result < len(temp):
+                    result = len(temp)
+                    print(temp)
+                    break
 
-            usedChar[s[i]] = i
-            print('start ',start)
-            print('maxLength ', maxLength)
-            print(usedChar)
-            print('*****************')
-
-        return maxLength
-
+    print(result)
 '''

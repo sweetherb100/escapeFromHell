@@ -31,7 +31,7 @@ class Solution(object):
 
         sum=0
         #apply 6 exceptions
-        if "IV" in s:
+        if "IV" in s: #find substring in string
             sum=sum+4
             start=s.find("IV")
             s = s[0:start] + s[start + 2:len(s)]

@@ -1,7 +1,7 @@
 '''
 performance : O(n logn)
 -> Divide  : O (log n), Compare and Combine : O(n)
-space complexity : O(n)
+space complexity : O(n) (because of lefthalf and righthalf??)
 
 *Process
 1) Divide in half until unsorted list has only one element
@@ -26,9 +26,9 @@ def mergesort(alist):
         mergesort(righthalf)
 
         #Step 3 : Combine
-        i=0
-        j=0
-        k=0
+        i=0 #update lefthalf list
+        j=0 #update righthalf list
+        k=0 #update alist list
 
         while i <len(lefthalf) and j < len(righthalf) :
             if lefthalf[i] < righthalf[j]:

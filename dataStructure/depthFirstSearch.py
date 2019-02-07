@@ -45,8 +45,13 @@ cf) [vertex for vertex in vertexList] -> ['0', '1', '2', '3', '4', '5', '6']
 : adjacencyList completed
 '''
 
-vertexList = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-edgeList = [(0,1), (0,2), (1,0) , (1,3) , (2,0) , (2,4) , (2,5) , (3,1), (4,2) , (4,6), (5,2), (6,4)]
+vertexList = [0, 1, 2, 3, 4, 5, 6] #['A', 'B', 'C', 'D', 'E', 'F', 'G']
+edgeList = [(0,1), (0,2),
+            (1,0) , (1,3) ,
+            (2,0) , (2,4) , (2,5) ,
+            (3,1),
+            (4,2) , (4,6),
+            (5,2), (6,4)]
 graphs = (vertexList, edgeList)
 
 def dfs(graph,start):
@@ -57,12 +62,14 @@ def dfs(graph,start):
 
     for edge in edgeList:
         adjacencyList[edge[0]].append(edge[1])
+    print(adjacencyList)
 
     while stack:
-        current=stack.pop()
+        current=stack.pop() #pop
         for neighbor in adjacencyList[current]:
             if not neighbor in visitedVertex:
-                stack.append(neighbor)
+                stack.append(neighbor) #push
+                print(stack)
         visitedVertex.append(current)
 
     return visitedVertex

@@ -1,5 +1,4 @@
 '''
-*Question
 Write a method to perform basic string compressions using the counts of repeated
 if the compressed string would not become smaller than the original string, then return original string
 input : aabcccaa
@@ -36,8 +35,96 @@ def compressword(input):
     else :
         return output
 
+#If order doesn't matter: use HashMap
+def compressword2(input):
+    dict={}
+    result=""
+    for ch in input: #for loop in input: O(N)
+        if ch not in dict.keys():
+            dict[ch]=1
+        else:
+            dict[ch]+=1
+
+
+     #but may not be in order!!!
+    for key,value in dict.items(): #for loop in dict: O(N)
+        result+=key
+        result+=str(value)
+
+    #Exception: compressed string has same length as the original string
+    if len(input) <= len(result):
+        return input
+
+
+    return result
+
+
+#If order matters: use vector(its index as the ASCII code)
+def compressword3(input):
+    buffer=[0]*256 #256 characters of ASCII code
+    charlist = [] #visited char
+    result=""
+
+    for ch in input: #for loop in input: O(N)
+        if buffer[ord(ch)] is 0: #access in vector: O(1)
+            charlist.append(ch)
+            buffer[ord(ch)]=1
+        else:
+            buffer[ord(ch)]+=1
+
+
+    for ch in charlist: #for loop in charlist: O(N)
+         result+=ch
+         result+=str(buffer[ord(ch)])
+
+
+    #Exception: compressed string has same length as the original string
+    if len(input) <= len(result):
+        return input
+
+    return result
+
+def compressword4(input):
+    dict={}
+    charlist = [] #visited char
+    result=""
+
+    for ch in input: #for loop in input: O(N)
+        if ch not in dict: #access in hashmap: O(1)
+            charlist.append(ch)
+            dict[ch]=1
+        else:
+            dict[ch]+=1
+
+
+    for ch in charlist: #for loop in charlist: O(N)
+         result+=ch
+         result+=str(dict[ch])
+
+
+    #Exception: compressed string has same length as the original string
+    if len(input) <= len(result):
+        return input
+
+    return result
+
+print("Using for loop; space: char, int")
 print(compressword("abbcccccccd"))
 print(compressword("abc"))
 print(compressword("aabcc")) #aabcc is shorter than a2b1c2. so return aabcc
 
+print("Using for hashMap")
+print(compressword2("abbcccccccd"))
+print(compressword2("abc"))
+print(compressword2("aabcc")) #aabcc is shorter than a2b1c2. so return aabcc
+
+print("Using for loop; space: 2 vectors")
+print(compressword3("abbcccccccd"))
+print(compressword3("abc"))
+print(compressword3("aabcc")) #aabcc is shorter than a2b1c2. so return aabcc
+
+print("Using for loop; space: vector/hashmap")
+print(compressword4("abbcccccccd"))
+print(compressword4("abc"))
+print(compressword4("aabcc")) #aabcc is shorter than a2b1c2. so return aabcc
 

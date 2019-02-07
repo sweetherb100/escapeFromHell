@@ -17,6 +17,30 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
+        result = [[1]]
+        templist=[]
+
+        for i in range(numRows-1):
+            templist = []
+
+            for j in range(len(result[i])-1):
+                templist.append(result[i][j]+result[i][j+1])
+            templist.insert(0,1) #put 1 in the front, 1 in the end in the last moment
+            templist.append(1)
+
+            result.append(templist)
+
+        return (result)
+
+solution = Solution()
+print(solution.generate(5))
+
+'''
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
 
         # initialize
         result = [[1]]
@@ -35,19 +59,4 @@ class Solution(object):
             result.append(tempresult)
 
         return (result)
-
-solution = Solution()
-print(solution.generate(5))
-
-'''
-        resultlist=[[1]]
-        for i in range(1,numRows,1): #starting from 1~4
-            templist=[1,1]
-            if i==1:
-                resultlist.append(templist)
-            else: #starting from 2
-                for i2 in range(i-1): #0,1
-                    templist.insert(i2+1,resultlist[i-1][i2]+resultlist[i-1][i2+1])
-                resultlist.append(templist)
-        return resultlist
 '''

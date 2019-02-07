@@ -40,30 +40,28 @@ class Solution(object):
         return prefix
 
 
+    #min max method
+    def longestCommonPrefix2(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        print("min max method")
+        print(min(strs)) #flight, alphabetically min
+        print(max(strs)) #flower, alphabetically max (already sorted)
+
+        minstr = min(strs)
+        maxstr = max(strs)
+
+        # in between, doesn't matter because it is already sorted
+        for i in range(len(minstr)):
+            if minstr[i] == maxstr[i]:
+                continue
+            else:
+                return minstr[:i]
+
+
+
 solution = Solution()
 print(solution.longestCommonPrefix(["flower","flow","flight"]))
-
-
-'''
-prefix=""
-        for index in range(len(strs)-1):
-            #find the shortest string
-            shortestlen=len(strs[index])
-            shortestindex=index
-            if shortestlen > len(strs[index+1]):
-                shortestindex=index+1
-
-        contains = True
-        for idx, charac in enumerate(strs[shortestindex]):
-            for idx2 in range(len(strs)):
-                if charac != strs[idx2][idx]:
-                    contains=False
-                    break
-            if contains is True:
-                prefix=prefix+charac
-                print("prefix : " + prefix)
-            else:
-                break
-
-        print(prefix)
-'''
+print(solution.longestCommonPrefix2(["flower","flow","flight"]))

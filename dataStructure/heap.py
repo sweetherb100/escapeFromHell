@@ -1,56 +1,93 @@
 '''
-*Performance : O(n log n)
-O(1) for get root value(max, min value)
-
-*Heapsort : in-place algorithm (doesn't need extra space)
-
-*Heap Tree : parent node is bigger than the child node (or smaller)
+*Heap Tree : 
+1) parent node is bigger than the child node (or smaller)
 (not only the root but also for each sub tree)
 
-*Heapsort Idea :
-1) use Array as a data structure of heap tree 
+2) use Array as a data structure of heap tree 
 cf) Binary Search Tree : really implement tree structure
 
-2) BAD : traverse first to the end node and change the value
-BETTER  : traverse first to the LAST NODE WHICH HAS CHILDREN and change the value (twice better permance)
-(size//2) -1 : LAST NODE WHICH HAS CHILDREN INDEX
+3) Different from heap Sort algorithm:
+Heap Sort: make heap data structure of given array (within heapify, there is shiftdown)
+Heap add/remove : each time add/remove item
+shift_up(one time using while) and shift_down(recursively for the subtree)
 
-3) Step 1: heapify (transform tree-> heap tree)
-2*i + 1 : LEFT CHILD NODE
-2*i + 2 : RIGHT CHILD NODE
-Step 2: siftdown (compare parent, left, right and swap the biggest to parent. Then go recursive)
-Step 3 : After making heap tree, do heap sort
+http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
 '''
 
-def Heapsort(a):
-    def heapify(a,size):
-        p = (size//2) -1 #LAST NODE WHICH HAS CHILDREN INDEX
-        while p>=0:
-            siftdown(a,p,size)
-            p-=1
 
-    def siftdown(a,i,size):
-        l=2*i +1 #LEFT CHILD NODE
-        r=2*i +2 #RIGHT CHILD NODE
+# max heap
+class Heap:
+    def __init__(self):
+        self.heap=[]
+        self.size=0 #error if len(self.heap)
+
+    def lefti(self, i):
+        return 2*i +1 #LEFT CHILD NODE
+
+    def righti(self, i):
+        return 2 * i + 2  # RIGHT CHILD NODE
+
+    def parenti(self, i):
+        return (i+1)//2 -1
+
+    def search(self, item):
+        return item in self.heap
+
+    def shift_up(self, idx):
+        while idx > 0 and self.heap[idx]  > self.heap[self.parenti(idx)]:
+            self.heap[idx], self.heap[self.parenti(idx)] = self.heap[self.parenti(idx)], self.heap[idx] #SWAP
+            idx = self.parenti(idx)
+
+
+    #Complexity : O(log n), shift_up
+    def add(self, item):
+        self.heap.append(item)
+        self.size += 1
+
+        #after adding in the last index and updating size, shift_up for that one item
+        idx = self.size-1
+        self.shift_up(idx)
+
+    def remove(self, item):
+        if item not in self.heap:
+            print("doesn't exist the item")
+            return False
+        else:
+            idx = self.heap.index(item)
+            self.heap[idx]=self.heap[-1]
+            self.heap.pop() #remove the last node and make it as "complete binary tree"
+            self.size -= 1
+
+            #from idx, shift_down recursively
+            self.shift_down(self.heap, idx)
+
+
+    def shift_down(self, list, i):
+        l = self.lefti(i)
+        r = self.righti(i)
+        size = self.size
         largest = i
-        if l<=size-1 and a[l]>a[i]:
+
+
+        if l <= size - 1 and list[l] > list[i]:
             largest = l
-        if r<=size-1 and a[r] > a[largest]:
-            largest=r
-        if largest !=i:
-            a[i],a[largest] = a[largest],a[i] #swap
-            siftdown(a,largest,size) #to make child subtree heap tree structure
+        if r <= size - 1 and list[r] > list[largest]:
+            largest = r
 
-    size=len(a)
-    heapify(a,size)
-
-    end=size-1
-    while(end>0):
-        a[0], a[end] = a[end], a[0] #swap #put the biggest element at the end of the list
-        siftdown(a,0,end) #heapify from index 0 to end (first loop : size-1. already excluded the end node which its swapping finished)
-        end-=1
+        #largest can be either left child or right child
+        if largest != i:
+            list[i], list[largest] = list[largest], list[i]  # swap
+            self.shift_down(list, largest)  # to make child subtree heap tree structure
 
 
-arr=[2,3,1,4,10,7]
-Heapsort(arr)
-print(arr)
+heap = Heap()
+heap.add(3)
+heap.add(5)
+heap.add(1)
+heap.add(19)
+heap.add(11)
+heap.add(22)
+print(heap.heap) #[22, 11, 19, 3, 5, 1]
+heap.remove(22)
+print(heap.heap)
+print(heap.search(3))

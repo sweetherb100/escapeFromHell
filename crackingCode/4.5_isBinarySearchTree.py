@@ -50,8 +50,6 @@ class BinarySearchTree:
         if cur.right is not None:
             self.__inorder(cur.right)
 
-    def printInorderList(self):
-        print(self.inorder_list)
 
 
 bt = BinarySearchTree()
@@ -65,22 +63,12 @@ bt.inorder_traverse()
 #if inorder_list is sorted, then it is BST
 orig = bt.inorder_list
 comp = sorted(orig)
-print(orig)
-print(comp)
+print(orig) #[1, 3, 4, 5, 7]
+print(comp) #[1, 3, 4, 5, 7]
 
 if orig == comp:
     print('this is bst')
 else :
     print('this is not bst')
 
-# Way 2
-# orig = bt.inorder_list
-# bt.inorder_list.sort()
-# print(orig)
-# print(bt.inorder_list)
-#
-# if orig == bt.inorder_list:
-#     print('this is bst')
-# else :
-#     print('this is not bst')
 

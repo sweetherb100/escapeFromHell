@@ -21,14 +21,14 @@ class Queue:
     def dequeue(self):
         self.items.pop()
 
-    def print_queue(self):
-        print(self.items)
-
     def is_empty(self):
         return self.items==[]
 
     def size(self):
         return len(self.items)
+
+    def print_queue(self):
+        print(self.items)
 
 queue=Queue()
 queue.enqueue(1)

@@ -5,14 +5,12 @@ Note: Given n will be a positive integer.
 
 Example 1:
 Input: 2
-Output: 2
-Explanation: There are two ways to climb to the top.
+Output: 2 (Explanation: There are two ways to climb to the top.)
 1. 1 step + 1 step
 2. 2 steps
 Example 2:
 Input: 3
-Output: 3
-Explanation: There are three ways to climb to the top.
+Output: 3 (Explanation: There are three ways to climb to the top.)
 1. 1 step + 1 step + 1 step
 2. 1 step + 2 steps
 3. 2 steps + 1 step
@@ -20,25 +18,23 @@ Explanation: There are three ways to climb to the top.
 
 class Solution(object):
     def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
         if n == 1:
             return 1
         elif n == 2:
             return 2
-        # else:
-        #	return self.climbStairs(n-1) + self.climbStairs(n-2)
-
-        f2 = 1 #old
-        f1 = 2 #new
-        for i in range(n - 2):
-            f = f1 + f2 #new
-            f2 = f1 #old becomes x_new
-            f1 = f #new becomes new
-
-        return f
+        else:
+            return self.climbStairs(n-1) + self.climbStairs(n-2)
 
 solution = Solution()
 print(solution.climbStairs(5))
+
+'''
+f2 = 1 #old
+f1 = 2 #new
+for i in range(n - 2):
+    f = f1 + f2 #new
+    f2 = f1 #old becomes x_new
+    f1 = f #new becomes new
+
+return f
+'''

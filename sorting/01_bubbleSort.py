@@ -1,15 +1,12 @@
 '''
 performance : O(n^2)
-space complexity : O(1)
+space complexity : O(1) (don't need extra space but in-place)
 swapping : N-1 (i for loop)
 
-*Python
-1) list =[i for i in range(10)]
-list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 '''
 
 def bubblesort(alist) :
-    for i in range(len(alist) -1): #number of swapping
+    for i in range(len(alist) -1):
         for j in range(len(alist)-i-1):
             if alist[j] > alist[j+1]:
                 alist[j],alist[j+1]  = alist[j+1], alist[j]

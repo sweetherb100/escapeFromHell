@@ -12,15 +12,28 @@ Output: 4
 '''
 
 class Solution(object):
+
+    # Use hashmap to check whether it has been visited
     def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        for i,num in enumerate(nums):
-            if num not in nums[:i]+nums[i+1:]:
-                return num
+        dict={}
+
+        for i in range(len(nums)): #for loop in nums: O(N)
+            if nums[i] not in dict: #find in hashmap: O(1)
+                dict[nums[i]] = False
+            else:
+                dict[nums[i]] = True
+
+        for key, value in dict.items(): #for loop in dict.items(): O(N)
+            if value is False:
+                return key
+
+    def singleNumber2(self, nums):
+        # applying the formula: every element appears twice except for one
+        return (2 * sum(set(nums)) - sum(nums))
+
 
 
 solution = Solution()
 print(solution.singleNumber([2,2,1]))
+print(solution.singleNumber([2,2,3,5,3,5,1]))
+print(solution.singleNumber2([2,2,3,5,3,5,1]))

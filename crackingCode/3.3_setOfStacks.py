@@ -27,7 +27,7 @@ class Stack():
         return self.items[-1]
 
     def is_empty(self):
-        return self.items==[]
+        return self.items==[] #True if empty, False if not empty
 
     def size(self):
         return len(self.items)
@@ -40,8 +40,14 @@ class Stacks():
         #initialize first stack in the stacklist
         self.stacklist.append(Stack())
 
+    def getLastStack(self):
+        return self.stacklist[-1]
+
+    def getStackCount(self):
+        return len(self.stacklist)
+
     def push(self,item):
-        st=self.getLastStack()
+        st=self.getLastStack() #always!
         if self.max_stack_size == st.size():
             newSt = Stack()
             newSt.push(item)
@@ -50,27 +56,13 @@ class Stacks():
             st.push(item)
 
     def pop(self):
-        st=self.getLastStack()
-        if st.is_empty() is False:
+        st=self.getLastStack() #always!
+        if st.is_empty() is False: #stack is NOT empty
             st.pop()
-            if st.is_empty(): #to match the count of Stacks
-                self.stacklist.pop()
+            if st.is_empty(): #stack is empty after pop()
+                self.stacklist.pop() #update stacklist
         else :
             print('there is no item in Stacks')
-
-        #If so, getStackCount doesn't match the real count of Stacks (WRONG WAY)
-        # if st.is_empty():
-        #     self.stacklist.pop()
-        #     st = self.getLastStack()
-        #     st.pop()
-        # else:
-        #     st.pop()
-
-    def getLastStack(self):
-        return self.stacklist[-1]
-
-    def getStackCount(self):
-        return len(self.stacklist)
 
     def printStacks(self):
         result=[]

@@ -8,3 +8,9 @@ def perm(input,i):
             input[i],input[j]=input[j],input[i] #swap back, for the next loop
 
 perm([1,2,3],0)
+#[1, 2, 3]
+#[1, 3, 2]
+#[2, 1, 3]
+#[2, 3, 1]
+#[3, 2, 1]
+#[3, 1, 2]

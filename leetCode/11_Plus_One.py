@@ -32,19 +32,3 @@ class Solution(object):
 
 solution = Solution()
 print(solution.plusOne([4,3,2,1]))
-
-
-'''
-        num=""
-        for i in range(len(digits)):
-            num=num+str(digits[i])
-
-        num1=int(num) + 1
-        strnum=str(num1)
-
-        numlist=[]
-        for i in range(len(strnum)):
-            numlist.append(int(strnum[i]))
-
-        return numlist
-'''

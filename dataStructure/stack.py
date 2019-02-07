@@ -1,8 +1,7 @@
 '''
 *Outline
 1) data type : list
-2) methods : push(append), pop(pop)
-(peek, is_empty, size, print methods are optional)
+2) methods : push, pop, peek, is_empty, size
 3) overflow (when push), underflow(when pop) needed to be considered
 
 *When stack is used?
@@ -25,13 +24,10 @@ class Stack:
         if len(self.items) > 0:
             self.items.pop()
         else: #underflow
-            print("abort push in order to prevent stack underflow")
-
-    def print_stack(self):
-        print(self.items)
+            print("stack is empty")
 
     def peek(self):
-        return self.items[len(self.items)-1]
+        return self.items[-1] #simpler than len(self.items)-1
 
     def is_empty(self):
         return self.items == []
@@ -39,6 +35,8 @@ class Stack:
     def size(self):
         return len(self.items)
 
+    def print_stack(self):
+        print(self.items)
 
 stack = Stack()
 stack.push(1)

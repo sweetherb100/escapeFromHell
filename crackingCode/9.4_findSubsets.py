@@ -31,7 +31,7 @@ class find_subsets_from_set:
         if subset: #if subset is not None
             cur=subset[0]
             #findSubset(prev, next items) + findSubset(prev+current, next items)
-            return self.findSubset(prev,subset[1:]) + self.findSubset(prev+[cur],subset[1:])
+            return self.findSubset(prev, subset[1:]) + self.findSubset(prev+[cur], subset[1:])
         return [prev]
 
 print(find_subsets_from_set().sub_sets([2,1,3]))

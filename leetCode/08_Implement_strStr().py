@@ -25,24 +25,7 @@ class Solution(object):
         if needle in haystack :
             return haystack.find(needle)
 
-        return -1
+        return 0
 
 solution = Solution()
 print(solution.strStr("hello","llo"))
-
-
-'''
-        if len(haystack) ==0 : #empty string
-            return 0
-
-        if needle not in haystack:
-            return -1
-
-        # string is like a list
-        if needle in haystack:
-            print("Yes")
-            sublen = len(needle)
-            for index in range(len(haystack)):
-                if haystack[index:index+sublen] == needle:
-                    return sublen
-'''

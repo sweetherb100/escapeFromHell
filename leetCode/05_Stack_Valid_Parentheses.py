@@ -32,8 +32,7 @@ class Solution(object):
                   '[': ']',
                   '{': '}'}
 
-        print(dicmap.keys())
-        print(dicmap.values())
+
         stack = []  # FILO
 
         try:
@@ -41,7 +40,7 @@ class Solution(object):
                 if s[i] in dicmap.keys():
                     stack.append(s[i])  # same as push
                 if s[i] in dicmap.values():  # pop
-                    if dicmap[stack.pop()] is not s[i]:
+                    if s[i] is not dicmap[stack.pop()]:
                         return False
 
         except:
@@ -53,15 +52,3 @@ class Solution(object):
         return True
 solution = Solution()
 print(solution.isValid("([)]"))
-
-'''
-numlist=[1,2,3,4,5,6]
-print(numlist.pop()) #6
-
-wintable = { #the one infront can win the end
-    'scissors':'paper',
-    'rock':'scissors',
-    'paper':'rock'
-}
-print(wintable['scissors']) #paper
-'''
