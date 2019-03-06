@@ -5,18 +5,25 @@ Permutation
 2) Excluding the swapped index, swap remained index with the rest of char
 '''
 
-def perm(n,i):
-    if i == len(n) -1:
-        print(n)
-    else:
-        for j in range(i,len(n)): #i<=j<len(n)
-            n[i],n[j] = n[j],n[i]
-            perm(n,i+1)
-            n[i],n[j] = n[j],n[i] #swap back, for the next loop
+def permute(nums):
+    def backtrack(start, end): #needed to be defined in front
+        if start == end:
+            ans.append(nums[:]) #WHY DOESNT NUMS WORK???
 
-perm([1,2,3],0)
+        for i in range(start, end):
+            nums[start], nums[i] = nums[i], nums[start]
+            backtrack(start + 1, end) #as it goes into recursive, start changes!
+            nums[start], nums[i] = nums[i], nums[start] #swap it back to make into original
 
-# print([j for j in range(0,10)])
+    nums=list(nums)
+    ans = []
+    backtrack(0, len(nums))
+    return ans
+
+
+print(permute("abcd"))
+# print(permute(["a","b","c"]))
+
 
 
 

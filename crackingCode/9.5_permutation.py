@@ -1,13 +1,14 @@
-def perm(input,i):
-    if i==len(input)-1:
+def perm(input,start):
+    if start==len(input)-1:
         print(input)
     else:
-        for j in range(i,len(input)):
-            input[i],input[j]=input[j],input[i]
-            perm(input,i+1)
-            input[i],input[j]=input[j],input[i] #swap back, for the next loop
+        for i in range(start,len(input)):
+            input[start],input[i]=input[i],input[start]
+            perm(input,start+1)
+            input[start],input[i]=input[i],input[start] #swap back, for the next loop
 
 perm([1,2,3],0)
+
 #[1, 2, 3]
 #[1, 3, 2]
 #[2, 1, 3]

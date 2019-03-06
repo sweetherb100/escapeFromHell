@@ -58,13 +58,13 @@ class BinarySearchTree :
             start=0
             end=len(list)-1
             mid = (start+end)//2
-            print('list[mid] ',list[mid])
             # don't need to give cur(self.head) as parameter.
             #add method automatically add node in its right place by BST rule(whether it is left or right).
             self.add(list[mid])
             self.__makeMinHeight(list[:mid])
             self.__makeMinHeight(list[mid+1:])
             return True
+
 
     def treeHeight(self):
         if self.head.val is None:
@@ -75,14 +75,10 @@ class BinarySearchTree :
     def __tree_height(self, cur, height):
         if cur.left is not None:
             self.height=height+1
-            print('self.height in left ' ,self.height)
-            print('cur.left.val',cur.left.val)
             self.__tree_height(cur.left, height+1)
 
         if cur.right is not None:
             self.height = height + 1
-            print('self.height in right ', self.height)
-            print('cur.right.val', cur.right.val)
             self.__tree_height(cur.right, height+1)
 
         if self.height > height:

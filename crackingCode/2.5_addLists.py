@@ -34,6 +34,7 @@ class LinkedList:
     def getHead(self):
         return self.head
 
+    ### LOOK AT INTERVIEW QUESTION : ADD 2 NUMBERS AS LISTS
     def addLists(self, list1, list2): #at least can calculate from the front
         cur1=list1.head
         cur2=list2.head
