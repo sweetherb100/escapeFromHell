@@ -27,8 +27,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root is None: # original: not root:
+        if root is None: # root here means root of the subtree
             return 0
-
 
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1

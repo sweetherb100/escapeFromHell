@@ -1,5 +1,6 @@
 '''
-Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+Merge two sorted linked lists and return it as a new list. 
+The new list should be made by splicing together the nodes of the first two lists.
 Example:
 
 Input: 1->2->4, 1->3->4
@@ -31,13 +32,13 @@ class LinkedList:
             cur=cur.next
         return result
 
-    def getHead(self):
-        return self.head
 
     def mergeTwoLists(self, list1, list2):
+        # Always save the head so that we can work with temp without changing original!
         cur1=list1.head
         cur2=list2.head
 
+        # Initialize Linkedlist with head value
         if cur1.val <= cur2.val:
             resultlist=LinkedList(cur1.val)
             cur1=cur1.next
@@ -45,6 +46,9 @@ class LinkedList:
             resultlist=LinkedList(cur2.val)
             cur2 = cur2.next
 
+
+        ### [COMPARE] this technique of using 3 whiles are not recommended (too many duplicate codes)
+        ### [COMPARE] Palindrome interview question
         while cur1 is not None and cur2 is not None: #AND
             if cur1.val <= cur2.val:
                 resultlist.add(cur1.val)
@@ -53,7 +57,8 @@ class LinkedList:
                 resultlist.add(cur2.val)
                 cur2 = cur2.next
 
-        #good thing about add is that I don't have to send the linkedlist to the end but add function will do it for me!
+        #good thing about add is that I don't have to send the linkedlist to the end
+        # but add function will do it for me with while loop starting from the head!
         while cur1 is not None:
             resultlist.add(cur1.val)
             cur1=cur1.next
@@ -63,10 +68,6 @@ class LinkedList:
             cur2 = cur2.next
 
         return resultlist.printlist()
-
-
-
-
 
 
 # 2 sorted list

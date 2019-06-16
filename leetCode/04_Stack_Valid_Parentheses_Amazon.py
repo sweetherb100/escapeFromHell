@@ -33,22 +33,27 @@ class Solution(object):
                   '{': '}'}
 
 
+        #Exception: not enough to make paired parenthesis ("(")
+        if len(s) <= 1:
+            return False
+
         stack = []  # FILO
 
-        try:
-            for i in range(len(s)):
-                if s[i] in dicmap.keys():
-                    stack.append(s[i])  # same as push
-                if s[i] in dicmap.values():  # pop
-                    if s[i] is not dicmap[stack.pop()]:
-                        return False
+        for i in range(len(s)):
+            if s[i] in dicmap.keys():
+                stack.append(s[i])  # same as push
+            if s[i] in dicmap.values():  # pop
+                if len(stack) ==0: #Exception: "))"
+                    return False
+                if s[i] is not dicmap[stack.pop()]: #len(stack)!=0
+                    return False
 
-        except:
-            return False  # IndexError: pop from empty list (sth wrong at the end)
 
-        if len(stack) != 0:  # (sth wrong at the front)
+        if len(stack) != 0:  #Exception: "(("
             return False
 
         return True
 solution = Solution()
 print(solution.isValid("([)]"))
+print(solution.isValid("))"))
+print(solution.isValid("(("))

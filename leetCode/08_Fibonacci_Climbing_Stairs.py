@@ -8,6 +8,7 @@ Input: 2
 Output: 2 (Explanation: There are two ways to climb to the top.)
 1. 1 step + 1 step
 2. 2 steps
+
 Example 2:
 Input: 3
 Output: 3 (Explanation: There are three ways to climb to the top.)
@@ -17,24 +18,31 @@ Output: 3 (Explanation: There are three ways to climb to the top.)
 '''
 
 class Solution(object):
-    def climbStairs(self, n):
+
+    # method1: recursive
+    def climbStairs_recur(self, n):
         if n == 1:
             return 1
         elif n == 2:
             return 2
         else:
-            return self.climbStairs(n-1) + self.climbStairs(n-2)
+            return self.climbStairs_recur(n-1) + self.climbStairs_recur(n-2)
+
+    # method1: iterative
+    def climbStairs_iter(self, n):
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+
+        f1 = 1 #old
+        f2 = 2 #new
+        for i in range(n-2):
+            f = f1 + f2 #new
+            f1 = f2 #f1: new old
+            f2= f #f2: new new
+        return f
 
 solution = Solution()
-print(solution.climbStairs(5))
-
-'''
-f2 = 1 #old
-f1 = 2 #new
-for i in range(n - 2):
-    f = f1 + f2 #new
-    f2 = f1 #old becomes x_new
-    f1 = f #new becomes new
-
-return f
-'''
+print(solution.climbStairs_recur(5))
+print(solution.climbStairs_iter(5))

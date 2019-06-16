@@ -39,26 +39,44 @@ class Solution(object):
             x = -x  # change x as positive for now
 
         #step3: extract each digit (can be done with recursion)
-        lennum = int(math.log10(x))+1 #get the length; not recommended:len(str(x))
+        lennum = int(math.log10(x))+1 #get the length; not recommended because it involves conversion:len(str(x))
         digit = []
         temp = x
-        for i in range(lennum - 1, -1, -1):  #if 3digits, then 2,1,0
+        for i in range(lennum - 1, -1, -1):  #if lennum=3, then i=2, 1, 0
             dig = temp // (10 ** i)  # quotient
-            print(dig)
             digit.append(dig)
             temp = temp - (dig * (10 ** i))
+        #digit =[1,5,3]
 
-        print(digit) #[1, 5, 3]
-
+        #step4: construct number by adding each digit from the back
         temp = 0
-        for i in range(lennum - 1, -1, -1):  # 2,1,0
+        for i in range(lennum - 1, -1, -1):  #if lennum=3, then i=2, 1, 0
             temp = temp + digit[i] * (10 ** i)
+        #temp=351
 
         if sign is False:
             temp = -temp
 
-        print(temp)
         return temp
 
 solution = Solution()
 print(solution.reverse(-153))
+
+
+# recursive way to get each digit in array
+def getDigitArray(n, list):
+    if 0 <= n and n <= 9:  # if 1 digit
+        list.append(n)
+        return list
+
+    else:
+        getDigitArray(n // 10, list) #quotient
+        list.append(n % 10) #remainder
+        return list
+
+numarr = getDigitArray(1234, [])
+print(numarr)
+# 1234
+# 123
+# 12
+# 1
