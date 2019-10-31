@@ -9,7 +9,6 @@ Input : [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
 Output : 6
 
 The sequence : [0, 2, 6, 9, 13, 15] or [0, 4, 6, 9, 11, 15] or [0, 4, 6, 9, 13, 15]
-
 https://leetcode.com/problems/longest-increasing-subsequence/discuss/152065/Python-explain-the-O(nlogn)-solution-step-by-step
 '''
 
@@ -41,10 +40,13 @@ class Solution:
 
         while start <= end:  # binary search (STOP WHEN end < start)
             mid = (start + end) // 2
+
             if ls[mid] < val:  # on the right
                 start = mid + 1
+
             elif ls[mid] > val:  # on the left
                 end = mid - 1
+
             else:  # if it is the same
                 return mid
 

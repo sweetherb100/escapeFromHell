@@ -30,3 +30,6 @@ class Solution(object):
 
 solution = Solution()
 print(solution.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
+
+for i in range(10-1,0,-1):
+    print(i)

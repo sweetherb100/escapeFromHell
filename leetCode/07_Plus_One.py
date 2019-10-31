@@ -23,12 +23,18 @@ class Solution(object):
         for i in range(len(digits)-1,-1,-1): #starting from the back
             if digits[i] !=9:
                 digits[i]=digits[i]+1 # carry for the rest OR +1 for the first digit
-                break #finishs
+                return digits #finish
             else: #if digits[i]==9
                 digits[i]=0
 
+        #Exception: [9,9,9]
+        digits.insert(0,1) #insert 1 at index 0
         return digits
 
 
 solution = Solution()
 print(solution.plusOne([4,3,2,1]))
+print(solution.plusOne([2,9]))
+print(solution.plusOne([2,8,9]))
+print(solution.plusOne([9,9,9]))
+

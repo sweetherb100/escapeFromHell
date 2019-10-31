@@ -19,6 +19,7 @@
 import math
 # digits = int(math.log10(n))+1
 
+# Umm... but not intuitive...
 class Solution(object):
     def reverse(self, x):
         """
@@ -70,13 +71,15 @@ def getDigitArray(n, list):
         return list
 
     else:
-        getDigitArray(n // 10, list) #quotient
+        getDigitArray(n // 10, list) #quotient, recursive
         list.append(n % 10) #remainder
         return list
 
-numarr = getDigitArray(1234, [])
+
+numarr = getDigitArray(1234, []) #[1, 2, 3, 4]
 print(numarr)
 # 1234
 # 123
 # 12
 # 1
+

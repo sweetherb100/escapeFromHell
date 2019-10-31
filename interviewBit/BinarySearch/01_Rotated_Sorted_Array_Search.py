@@ -5,6 +5,8 @@ You are given a target value to search. If found in the array, return its index,
 You may assume no duplicate exists in the array.
 Input : [4 5 6 7 0 1 2] and target = 4
 Output : 0
+
+Hint:"sorted array"=> try to link with Binary Search
 '''
 
 
@@ -21,9 +23,12 @@ class Solution:
 
             if A[mid] == B:
                 return mid
+
+            # you should feel strange to see A[start] > A[mid] even though it is "sorted"!
             elif (A[start] <= B < A[mid]) or (A[start] > A[mid] and not (A[mid] < B <= A[end])): ### MAKES BIG DIFFERENCE WITH <=
                 end = mid - 1
-            else:
+
+            else: # A[mid] < B <= A[end]
                 start = mid + 1
 
         return -1

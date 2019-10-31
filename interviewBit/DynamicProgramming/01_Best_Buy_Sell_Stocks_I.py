@@ -4,7 +4,6 @@ If you were only permitted to complete at most one transaction (ie, buy one and 
 design an algorithm to find the maximum profit.
 
 Example :
-
 Input : [1 2]
 Return :  1
 '''
@@ -21,8 +20,8 @@ class Solution:
         start = A[0]
 
         for i in range(1, len(A), 1):
-            maxprofit = max(A[i] - start, maxprofit) #one transaction
-            start = min(start, A[i])
+            maxprofit = max(A[i]-start, maxprofit) #one transaction, maximize the profit
+            start = min(start, A[i]) #minimize the start
 
         return maxprofit
 

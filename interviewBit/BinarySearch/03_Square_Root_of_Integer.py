@@ -23,10 +23,13 @@ class Solution:
 
         while start <= end: #ALWAYS FOR B.S
             mid = (start + end) // 2 #ALWAYS FOR B.S
-            if mid*mid <= A and (mid + 1) * (mid + 1) > A: #WRONG SYNTAX : mid^2
+
+            if mid*mid <= A and (mid+1)*(mid+1) > A: #WRONG SYNTAX : mid^2
                 return mid
+
             elif mid*mid > A:  # on the left
                 end = mid - 1
+
             elif mid*mid < A:  # on the right (specify as much as possible just in case)
                 start = mid + 1
 

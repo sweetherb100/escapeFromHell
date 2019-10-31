@@ -28,8 +28,6 @@ class Solution:
         tempsum = 0
         tempsubarray = []
 
-        # [COMPARE] 14_logestSubstrWithoutRepeatingchars, 15_longestPalindromicSubstr
-
         # going through the element in the array
         for i in range(len(arr)):
             if arr[i] >= 0:

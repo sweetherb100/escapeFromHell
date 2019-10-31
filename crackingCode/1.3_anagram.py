@@ -31,9 +31,10 @@ def anagram(str1, str2) :
         return False
 
 # Using hashmap
-# Umm....but if there is 2 l and 2 s, cannot differentiate with HashMap!!
+# If there is 2 l and 2 s, cannot differentiate with HashMap!
+# => instead of True/False flag, save the number of visits
 def anagram2(str1, str2) :
-    dict={} #instead of True/False flag, save the number of visits
+    dict={}
 
     for i in range(len(str1)):
         if str1[i] not in dict:
@@ -48,6 +49,7 @@ def anagram2(str1, str2) :
         else:
             dict[str2[i]] -= 1
 
+
     for key in dict.values():
         if key != 0:
             return False
@@ -58,30 +60,3 @@ def anagram2(str1, str2) :
 print(anagram2("llisten","lsilent"))
 #print(anagram2("lisTeN","SilEnt"))
 #print(anagram2("l i s T e N"," Si lEnt "))
-
-
-'''
-    dict={} #initialize
-
-    if len(str1) != len(str2):
-        return False
-
-    #Exception: spaces in between; lower/upper case
-    for i in range(len(str1)): #for loop in str1: O(N)
-        if str1[i] != " ":
-            dict[str1[i].lower()]=False
-
-
-    for i in range(len(str2)): #for loop in str2: O(N)
-        if (str2[i] != " ") and (str2[i].lower() in dict.keys()): #Find key in hashMap: O(1)
-            dict[str2[i].lower()] = True
-
-    #print(dict.keys())
-    #print(dict.items())
-    #print(dict.values()) # BE CAREFUL!!! dict.items() always with key,value
-
-    if False in dict.values(): #Find value in hashMap: O(N)
-        return False
-
-    return True
-'''

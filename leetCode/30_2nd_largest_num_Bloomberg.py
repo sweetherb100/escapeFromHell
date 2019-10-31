@@ -5,7 +5,7 @@ class Solution(object):
         if len(list) == 1:
             print("no second largest")
             return list[0]
-        elif len(list) ==2:
+        elif len(list) == 2:
             return min(list[0], list[1])
 
         maxnum=list[0]

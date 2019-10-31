@@ -35,7 +35,7 @@ class Solution:
     def colorful(self, A):
         numarr = self.getDigitArray(A, []) #each digit of the integer
         length = len(numarr)
-        tot_comb = length * (length + 1) / 2
+        tot_comb = length * (length + 1) / 2 #total combination
 
         hashset = set()
 

@@ -23,11 +23,11 @@ class Solution:
         start = A[0]
 
         for i in range(1, len(A), 1):
-            if start > A[i]: #if starting point is larger, then update the starting point
+            if start > A[i]: #minimize the start (if starting point is larger, then update the starting point)
                 start = A[i]
             else:  # start < A[i]
-                bestprofit += (A[i] - start)
-                start = A[i] #updating starting point
+                bestprofit += (A[i] - start) #multiple transaction every time start < A[i]
+                start = A[i] #updating starting point after finishing transaction
 
         return bestprofit
 
