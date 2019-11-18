@@ -10,14 +10,8 @@ ex) vertextList = ['0','1','2','3','4','5']
 2) Edge List : all the edge in the list
 ex) edgeList = [(0,1),(1,0),(1,2),(1,3),(2,1),(3,1),(3,4),(4,3)]
 3) Adjacency List (list in list)
-ex) adjacencyList = [
-    [1],
-    [0,2,3],
-    [1],
-    [1,4],
-    [5],
-    [4]
-]
+ex) adjacencyList = [ [1], [0,2,3], [1], [1,4], [5], [4] ]
+
 [advantage] 
 -low space complexity O(number of edge)
 -traverse can be done because it is list (used in BFS, DFS)
@@ -60,20 +54,24 @@ def dfs(graph,start):
     visitedVertex =[]
     stack=[start]
 
-    adjacencyList =[[] for vertex in vertexList]
+    adjacencyList =[[] for vertex in vertexList] #[[], [], [], [], [], [], []]
 
     for edge in edgeList:
         adjacencyList[edge[0]].append(edge[1])
+    # adjacencyList: [[1, 2], [0, 3], [0, 4, 5], [1], [2, 6], [2], [4]]
 
     while stack:
         current=stack.pop() #pop
         for neighbor in adjacencyList[current]:
             if not neighbor in visitedVertex:
                 stack.append(neighbor) #push
+        # end of for loop, adjacencyList[current] might be [0, 4, 5]
         visitedVertex.append(current)
+        # end of while
 
     return visitedVertex
 
-print('dfs : ',dfs(graphs,0)) #[0, 2, 5, 4, 6, 1, 3] : in form of index list
+print(dfs(graphs,0))
+#[0, 2, 5, 4, 6, 1, 3] : in form of index list
 
 

@@ -37,4 +37,5 @@ class Solution:
 
 sol= Solution()
 print(sol.generateParenthesis(3))
+# ['((()))', '(()())', '(())()', '()(())', '()()()']
 

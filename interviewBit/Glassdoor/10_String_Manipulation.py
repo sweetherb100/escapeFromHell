@@ -28,15 +28,16 @@ class Solution():
         for x in set(string) :#range(len(strset)): #### WRONG!!!
             if string.count(x) > (n+1)//2: #valid only until the max count is <= (n+1)//2
                 return ""
-
             info.append((string.count(x), x)) #####save as tuple
+
         info.sort(reverse=True) #descending order (default : ascending)
 
         infostr = []
+        # infostr : the largest repeating count for sure will be <= (N+1)//2
         for i in range(len(info)):
             infostr.extend([info[i][1]] * info[i][0])
 
-        #infostr : the largest repeating count for sure will be <= (N+1)//2
+        print(infostr)
         result = [None] * n
 
         # jump by 2 starting from index 0
@@ -45,9 +46,14 @@ class Solution():
         # jump by 2 starting from index 1
         result[1::2] = infostr[(n + 1) // 2:] #using the rest of elements starting from (n+1)//2, distribute to the result
 
-        return "".join(result) ###result NO: return by string
+        return '\t'.join(map(str, result[::]))
+        #return "".join(result) ###return result(X), should return by string
 
 sol=Solution()
 print(sol.reorganizeString("aabc"))
 
-print(set("aabc"))
+# print(set("aabc"))
+
+# temp=[]
+# temp.extend([2]*6)
+# print(temp)

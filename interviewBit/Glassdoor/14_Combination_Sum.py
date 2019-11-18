@@ -2,6 +2,7 @@
 Given a set of candidate numbers (C) and a target number (T), 
 find all "unique" combinations in C where the candidate numbers sums to T.
 
+*Be careful: the candidate number doesn't necessarily be used once but can be used more than once!
 https://www.youtube.com/watch?v=Viu3iQLmQlY
 
 Time Complexity :

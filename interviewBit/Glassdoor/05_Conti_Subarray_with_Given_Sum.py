@@ -15,8 +15,9 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        dict = {}  # just in case there is duplicate sum, use count as value
-        dict[0] = 1
+        # just in case there is duplicate sum, use count as value
+        dict = {}  # key: sum so far for every for loop, value: count (there can be duplicate sum)
+        dict[0] = 1 #default: sum=0, its count=1
         count = 0 #total count
         sum = 0
 
@@ -24,7 +25,7 @@ class Solution(object):
             sum += nums[i]
 
             if sum - B in dict:  # i.e. old_sum exists in dict
-                count += dict[sum - B]  # because sum-B == old_sum in dict ################## THIS PART TO ME SO LONG TIME.....
+                count += dict[sum - B]  #### because sum - B == old_sum in dict
 
             # always sum should be updated in the dict
             if sum not in dict:
@@ -33,6 +34,7 @@ class Solution(object):
                 dict[sum] += 1
 
         return count
+
 
 ### JUST DETERMINING (NOT COUNTING)
     def subarraySum2(self, nums, B):

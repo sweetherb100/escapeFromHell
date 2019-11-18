@@ -13,7 +13,7 @@ class find_subsets_from_set:
         return self.ls
 
     # original set is needed to update the val of cur index
-    def subsets_helper(self, set, subset, cur):  # use 3 argument : original string, recursive subset, cur pos
+    def subsets_helper(self, set, subset, cur):  # use 3 argument : original list, recursive subset, cur pos
         # base condition : reached the end
         if cur == len(set):
             self.ls.append(subset[::]) #copy by value the list

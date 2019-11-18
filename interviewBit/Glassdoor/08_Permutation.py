@@ -8,15 +8,16 @@ Example :
 [1,2,1]
 [2,1,1]
 
-number of ermutation : n! 
+number of permutation : n! 
 *Recursion
 1) Starting in front of index, swap with the rest if char
 2) Excluding the swapped index, swap remained index with the rest of char
 
 '''
 
-### WITH MEMORIZATION WITH DICT (SO ''.join(map(str, A[::])) IS NEEDED TO CHANGE THE LIST OF NUMBER INTO STRING)
-### SHOULD BE UNIQUE!!
+
+### should be unique: use dict
+### ''.join(map(str, A[::])): it is needed to change from list to string
 class Solution:
     # @param A : list of integers
     # @return a list of list of integers
@@ -30,14 +31,14 @@ class Solution:
         #           start with 3 and permute [1,2,4]
         # ...
 
-        self.permute_helper(A, 0)
+        self.permute_helper(A, 0) #orig list, starting
         return self.result
 
     def permute_helper(self, A, start):
         # base condition : there is no interesting string behind
-        if start == len(A):
-            temp = ''.join(map(str, A[::]))  ### ''.join(A[::]) doesnt work because it is number
-            if temp not in self.mem:
+        if start == len(A): #reached the end
+            temp = ''.join(map(str, A[::]))  #temp becomes string, ''.join(A[::]) doesnt work because it is number
+            if temp not in self.mem: #mem: dict to keep track of the unique permutation
                 self.mem[temp] = True  # save
                 self.result.append(A[::])  # copy by value the list
                 return
@@ -51,37 +52,38 @@ class Solution:
 sol=Solution()
 print(sol.permute([1,1,2]))
 
-# class Solution():
-#     def __init__(self):
-#         self.result=[]
-#
-#     def permute(self,nums):
-#         nums = list(nums)
-#         self.permute_helper(nums, 0) #orig list, starting
-#         return self.result
-#
-#     def permute_helper(self, nums, start):
-#         #base condition
-#         if start == len(nums): #reached the end
-#             self.result.append(nums.copy()) #CANNOT USE nums BECAUSE IT IS COPY BY REFERENCE (LIKE IN SUBSETS), nums[:] can be also used
-#             return
-#
-#         #recursion
-#         for i in range(start, len(nums)):
-#             nums[start], nums[i] = nums[i], nums[start] #SWAP
-#             self.permute_helper(nums, start + 1) #as it goes into recursive, start changes!
-#             nums[start], nums[i] = nums[i], nums[start] #SWAP IT BACK (CHANGE IT BACK TO ORIGINAL)
+class Solution2():
+    def __init__(self):
+        self.result=[]
+
+    def permute(self,nums):
+        nums = list(nums) #needed or else, TypeError: 'str' object does not support item assignment
+        self.permute_helper(nums, 0) #orig list, starting
+        return self.result
+
+    def permute_helper(self, nums, start):
+        #base condition
+        if start == len(nums): #reached the end
+            temp=''.join(map(str, nums[::])) #make list into string
+            self.result.append(temp)
+            return
+
+        #recursion
+        for i in range(start, len(nums)):
+            nums[start], nums[i] = nums[i], nums[start] #SWAP
+            self.permute_helper(nums, start + 1) #as it goes into recursive, start changes!
+            nums[start], nums[i] = nums[i], nums[start] #SWAP IT BACK (CHANGE IT BACK TO ORIGINAL)
 
 
 
-# sol=Solution()
+sol=Solution2()
 # list=sol.permute("abc")
 # print(list)
 # print(len(list))
 
-# list=sol.permute("abcd")
-# print(list)
-# print(len(list))
+list=sol.permute("abcd")
+print(list)
+print(len(list))
 
 
 

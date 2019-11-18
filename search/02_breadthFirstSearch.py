@@ -18,28 +18,23 @@ def bfs(graph, start) :
     visitedVertex = []
     queue=[start]
 
-    adjacencyList = [[] for vertex in vertexList]
+    adjacencyList = [[] for vertex in vertexList] #[[], [], [], [], [], [], []]
+    print(adjacencyList)
     for edge in edgeList:
         adjacencyList[edge[0]].append(edge[1])
+    #adjacencyList: [[1], [2, 3, 6], [], [4], [5], [], []]
 
     while queue:
         current=queue.pop(0) #dequeue
         for neighbor in adjacencyList[current]:
             if not neighbor in visitedVertex:
                 queue.append(neighbor) #enqueue
+            # end of for loop, adjacencyList[current] might be [2,3,6]
         visitedVertex.append(current)
+        #end of while
+
 
     return visitedVertex
 
-print(bfs(graphs,0)) #[0, 1, 2, 3, 6, 4, 5]
-
-'''
-    while queue:
-        current=queue.pop() #dequeue
-        for neighbor in adjacencyList[current]:
-            if not neighbor in visitedVertex:
-                queue.insert(0,neighbor) #enqueue
-        visitedVertex.append(current)
-        
-    return visitedVertex
-'''
+print(bfs(graphs,0))
+#[0, 1, 2, 3, 6, 4, 5]

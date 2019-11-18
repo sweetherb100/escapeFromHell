@@ -1,6 +1,5 @@
 '''
 Given an integer array nums, find the "contiguous" subarray (containing at least one number) which has the largest sum and return its sum.
-
 Example:
 Input: [-2,1,-3,4,-1,2,1,-5,4],
 Output: 6
@@ -15,8 +14,8 @@ class Solution(object):
         best = cur = nums[0]
 
         for i in range(1,len(nums),1):
-            cur = max(cur + nums[i], nums[i]) #update cur
-            best = max(best, cur) #update best
+            cur = max(cur+nums[i], nums[i]) #update cur by choosing the maximum
+            best = max(best, cur) #update best by choosing the maximum
 
         return best
 

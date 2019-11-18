@@ -19,7 +19,8 @@ Example 1:
  [0,0,0,0,0,0,0,1,1,0,0,0,0]]
 Given the above grid, return 6. Note the answer is not 11, because the island must be connected 4-directionally.
 
-*Data Structure : Stack (Depth First Search) OR RECURSION
+*Data Structure : Stack (Depth First Search)
+* Algorithm: RECURSION or ITERATIVE
 
 *Algorithm
 step 1) double for loop to go through each coordinate
@@ -85,25 +86,37 @@ print(sol.maxAreaOfIsland([[0,0,1,0,0,0,0,1,0,0,0,0,0],
                            [0,0,0,0,0,0,0,1,1,1,0,0,0],
                            [0,0,0,0,0,0,0,1,1,0,0,0,0]])) #6
 
-# class Solution(object):
-#     #ITERATIVE
-#     def maxAreaOfIsland(self, grid):
-#         seen = set() #saved as tuple (i.e. coordinate of 2-dim)
-#         ans = 0
-#
-#         for r0 in range(len(grid)):
-#             for c0 in range(len(grid[r0])): #2-dimen matrix
-#                 if grid[r0][c0] == 1 and (r0, c0) not in seen:
-#                     shape = 0
-#                     stack = [(r0, c0)] #saved as tuple (coordinate)
-#                     seen.add((r0, c0)) #saved as tuple (coordinate)
-#
-#                     while stack:
-#                         (r, c) = stack.pop() #pop as tuple
-#                         shape += 1
-#                         for (nr, nc) in ((r-1, c), (r+1, c), (r, c-1), (r, c+1)): #(nr, nc) is one of 4 tuples and only 4 search
-#                             if (0 <= nr < len(grid) and 0 <= nc < len(grid[nr]) and grid[nr][nc] == 1 and (nr, nc) not in seen):
-#                                 stack.append((nr, nc))
-#                                 seen.add((nr, nc))
-#                     ans = max(ans, shape) #update with the best area
-#         return ans
+
+
+class Solution2(object):
+    #ITERATIVE
+    def maxAreaOfIsland(self, grid):
+        seen = set() #saved as tuple (i.e. coordinate of 2-dim)
+        ans = 0
+
+        for r0 in range(len(grid)):
+            for c0 in range(len(grid[r0])): #2-dimen matrix
+                if grid[r0][c0] == 1 and (r0, c0) not in seen:
+                    shape = 0
+                    stack = [(r0, c0)] #saved as tuple (coordinate)
+                    seen.add((r0, c0)) #saved as tuple (coordinate)
+
+                    while stack:
+                        (r, c) = stack.pop() #pop as tuple
+                        shape += 1
+                        for (nr, nc) in ((r-1, c), (r+1, c), (r, c-1), (r, c+1)): #(nr, nc) is one of 4 tuples and only 4 search
+                            if (0 <= nr < len(grid) and 0 <= nc < len(grid[nr]) and grid[nr][nc] == 1 and (nr, nc) not in seen):
+                                stack.append((nr, nc))
+                                seen.add((nr, nc))
+                    ans = max(ans, shape) #update with the best area
+        return ans
+
+sol=Solution2()
+print(sol.maxAreaOfIsland([[0,0,1,0,0,0,0,1,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,1,1,1,0,0,0],
+                           [0,1,1,0,1,0,0,0,0,0,0,0,0],
+                           [0,1,0,0,1,1,0,0,1,0,1,0,0],
+                           [0,1,0,0,1,1,0,0,1,1,1,0,0],
+                           [0,0,0,0,0,0,0,0,0,0,1,0,0],
+                           [0,0,0,0,0,0,0,1,1,1,0,0,0],
+                           [0,0,0,0,0,0,0,1,1,0,0,0,0]])) #6

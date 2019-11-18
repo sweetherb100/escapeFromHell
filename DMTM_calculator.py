@@ -162,7 +162,7 @@ def gradient_descent (w0, w1, x, y):
     print("f_w0 : " + str(f_w0) + " " + "f_w1 : " + str(f_w1))
     return [f_w0, f_w1]
 
-# gradient_descent(10, 15, x, y)
+gradient_descent(10, 15, x, y)
 
 
 def gradient_iteration(k, init_w0, init_w1):
@@ -222,7 +222,3 @@ print("sum24: " + str(sum24))
 
 print("sum34: " + str(sum34))
 print("***********************")
-
-for i in [l:r+1]:
-    print(i)
-

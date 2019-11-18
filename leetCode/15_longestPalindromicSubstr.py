@@ -16,6 +16,8 @@ class Solution(object):
         dict={}
         maxlength=0
         result=""
+        if len(s) == 1:
+            return s
 
         # [COMPARE] 14_longestSubstrWithoutRepeatingChars
         # step1: going through each character from the first element
@@ -40,5 +42,6 @@ class Solution(object):
 
 
 sl=Solution()
-print(sl.longestPalindrome("babababab"))
+# print(sl.longestPalindrome("babababab"))
+print(sl.longestPalindrome("a"))
 
