@@ -4,8 +4,8 @@ class Solution(object):
         i=0
         num=2
 
-        while(i != nth) :
-            if (self.isPrime(num)):
+        while(i != nth) : #stop when i==nth
+            if (self.isPrime(num)): #use isPrime function
                 i+=1
 
             if (i == nth):

@@ -13,43 +13,32 @@ nums2 = [2,5,6],       n = 3
 Output: [1,2,2,3,5,6]
 '''
 
+#strategy: start from the last index
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
-        """
-        :type nums1: List[int]
-        :type m: int
-        :type nums2: List[int]
-        :type n: int
-        :rtype: void Do not return anything, modify nums1 in-place instead.
-        """
+        cur1=m-1 #last index of array1
+        cur2=n-1 #last index of array2
+        index=len(nums1)-1 #last index of nums1
 
-        #BE CAREFUL! index should be 1 more less than the length...
-        cur1=m-1
-        cur2=n-1
-        cur=len(nums1)-1
-
-        #until index 0 has been taken care of1
-        while cur1 >=0 and cur2 >= 0: ######### index0 included!
+        #while valid index (until index 0)
+        while cur1 >=0 and cur2 >= 0: #stop when cur1 < 0 or cur2 < 0:
             if nums1[cur1] <= nums2[cur2]:
-                nums1[cur]=nums2[cur2]
-                cur-=1
+                nums1[index]=nums2[cur2]
+                index-=1
                 cur2-=1
             else:
-                nums1[cur] = nums1[cur1]
-                cur-=1
+                nums1[index] = nums1[cur1]
+                index-=1
                 cur1-=1
 
-        print(cur1)
-        print(cur2)
-        # cur1 or cur2 == -1 (reached to the front)
         # problem occurs when cur2 has not been reached to the front (cur2 != -1)
         # need to update the rest of nums2 to nums1
 
         #problem already solved when cur2 == -1 because cur1 can stay where it is
 
-        while cur2 >= 0: #stop when cur2 == -1
-            nums1[cur]=nums2[cur2]
-            cur-=1
+        while cur2 >= 0: #stop when cur2 == -1:
+            nums1[index]=nums2[cur2]
+            index-=1
             cur2-=1
 
         return nums1

@@ -7,10 +7,6 @@ You may assume that the array is non-empty and the majority element "always" exi
 
 class Solution(object):
     def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         #Use hashmap to save the count of the element
         dict = {}
 
@@ -21,3 +17,6 @@ class Solution(object):
                 dict[nums[i]] += 1
                 if dict[nums[i]] >= len(nums)//2:
                     return nums[i] #return that element
+
+solution = Solution()
+print(solution.majorityElement([1,2,2,2,2,8,11]))

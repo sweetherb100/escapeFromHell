@@ -16,15 +16,11 @@ Explanation: The array represents the integer 4321.
 
 class Solution(object):
     def plusOne(self, digits):
-        """
-        :type digits: List[int]
-        :rtype: List[int]
-        """
-        for i in range(len(digits)-1,-1,-1): #starting from the back
+        for i in range(len(digits)-1,-1,-1): #starting from the back until index 0
             if digits[i] !=9:
                 digits[i]=digits[i]+1 # carry for the rest OR +1 for the first digit
                 return digits #finish
-            else: #if digits[i]==9
+            else:
                 digits[i]=0
 
         #Exception: [9,9,9]
@@ -35,6 +31,6 @@ class Solution(object):
 solution = Solution()
 print(solution.plusOne([4,3,2,1]))
 print(solution.plusOne([2,9]))
-print(solution.plusOne([2,8,9]))
+print(solution.plusOne([2,9,9]))
 print(solution.plusOne([9,9,9]))
 

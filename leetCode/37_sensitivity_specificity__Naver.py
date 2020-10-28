@@ -2,6 +2,9 @@
 # print("this is a debug message")
 # https://en.wikipedia.org/wiki/Sensitivity_and_specificity
 
+#         positive     negative
+# true    TP          FN
+# false   FP          TN
 
 def solution(A, B, q):
     # assumption: length of array >=1
@@ -26,7 +29,7 @@ def solution(A, B, q):
         elif A[i] == 0 and B[i] == 0:
             TN += 1
 
-    if q == False:  # sensitivity = TP/(TP+FN)
+    if q == False:  # sensitivity = recall = TP/(TP+FN)
         return TP / (TP + FN)
     elif q == True:  # specificity = TN/(TN+FP)
         return TN / (TN + FP)

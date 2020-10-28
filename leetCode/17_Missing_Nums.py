@@ -15,10 +15,6 @@ class Solution(object):
         #Complexity: O(N), need to go through whole nums to get the sum of its array
         numssum=sum(nums)
 
-        # sum = 0
-        # for i in range(len(nums)):
-        #     sum += nums[i]
-
         return totalsum - numssum
 
 solution = Solution()

@@ -1,13 +1,10 @@
 '''
 Data structure : vector (each element indicates the flag)
-(instead of 2 for loop)
 
 In a more smarter way, I don't need to find each prime!
 I just need to find the number of prime
 '''
 
-
-### Question is only asking you to get the number of prime (don't need to get the whole prime vector)
 class Solution(object):
     def countPrimes(self, n):
         # Exception
@@ -30,11 +27,12 @@ class Solution(object):
 
         #if 1, prime; if not, not prime
         print(vect)
-
         return(sum(vect))
+
 
 solution = Solution()
 print(solution.countPrimes(10))
 
-#list2=[1,2,3,4,5,6,7]
-#print(list2[1:7:2]) #[2, 4, 6]
+list2=[0,1,2,3,4,5,6,7]
+print(list2[2:7:2])
+#[2, 4, 6]

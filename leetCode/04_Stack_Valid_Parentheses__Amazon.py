@@ -8,15 +8,19 @@ Note that an empty string is also considered valid.
 Example 1:
 Input: "()"
 Output: true
+
 Example 2:
 Input: "()[]{}"
 Output: true
+
 Example 3:
 Input: "(]"
 Output: false
+
 Example 4:
 Input: "([)]"
 Output: false
+
 Example 5:
 Input: "{[]}"
 Output: true
@@ -24,10 +28,6 @@ Output: true
 
 class Solution(object):
     def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
         dicmap = {'(': ')',
                   '[': ']',
                   '{': '}'}
@@ -56,4 +56,16 @@ class Solution(object):
 solution = Solution()
 print(solution.isValid("([)]"))
 print(solution.isValid("))"))
-print(solution.isValid("(("))
+print(solution.isValid("()[]{}"))
+
+stack=[0,1,2,3] #FILO
+print(stack.pop())
+stack.append(4)
+print(stack.pop())
+
+dicmap = {'(': ')',
+          '[': ']',
+          '{': '}'}
+print(dicmap.keys())
+print(dicmap.values())
+print(dicmap.items())

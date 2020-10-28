@@ -4,7 +4,9 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 '''
 
-# OPTIMIZED WITH ONE FOR LOOP
+# similar question: 27_Find_Element_Amazon.py
+
+# method1: using 1 for loop
 class Solution(object):
     def twoSum(self, nums, target):
         result=[]

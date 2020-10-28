@@ -15,6 +15,8 @@ Each element in the result must be unique.
 The result can be in any order.
 '''
 
+#strategy: Utilize set()
+
 class Solution(object):
     def intersection(self, nums1, nums2):
         """
@@ -22,12 +24,11 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-
         result=[]
         visitedset=set()
 
         if (len(nums1) > len(nums2)):
-            nums1, nums2 = nums2, nums1 #nake sure nums1 has smaller length
+            nums1, nums2 = nums2, nums1 #make sure nums1 has smaller length
 
         for i in range(len(nums1)):
             if nums1[i] in nums2 and nums1[i] not in visitedset:
@@ -37,5 +38,7 @@ class Solution(object):
         return result
 
 
-# Input: [1,2,2,1], [2,2]
-# Output: [2]
+solution = Solution()
+print(solution.intersection([1,2,2,1], [2,2]))
+print(solution.intersection([4,9,5], [9,4,9,8,4]))
+

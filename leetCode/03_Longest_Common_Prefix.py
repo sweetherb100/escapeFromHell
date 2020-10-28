@@ -14,10 +14,7 @@ Explanation: There is no common prefix among the input strings.
 
 class Solution(object):
     def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
+
         minstr = min(strs) #'flight', alphabetically min
         maxstr = max(strs) #'flower', alphabetically max (already sorted)
         # in between, doesn't matter because it is already sorted
@@ -32,3 +29,6 @@ solution = Solution()
 print(solution.longestCommonPrefix(["flower","flow","flight"])) #fl
 print(solution.longestCommonPrefix(["c","c"])) #c
 print(solution.longestCommonPrefix(["aa","a"])) #a
+
+print("0123"[:2]) #last index not included
+print("0123"[2:])

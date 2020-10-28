@@ -1,20 +1,4 @@
 '''
-"A man, a plan, a canal, Panama!" -> true
-"aba" -> true
-"Aba" -> true
-"A,,,,,,,,b......a!!" -> true
-
-input : string
-return : boolean
-exception: upper case/lower case, character 
-ASCII code lower case : 97 <= <=122
-A -> lower case 
-
-isalpha(char): input char, return boolean
-isalpha('A') -> True
-isalpha(' ') -> False
-
-
 [Method1] data structure : STACK
 but ABCBA in stack and pop each character out and compare from the front
 Time Complexity: O(N)
@@ -28,16 +12,9 @@ ABBA
 A vs A
 B vs B => after all the comparison, it is still valid, True
 
-Time complexity : O(N/2) O(N)
+Time complexity : O(N/2) (=O(N))
 Space complexity : O(1) (just need to save the index)
 '''
-
-
-# TEST CASE:
-        # a
-        # abb,a
-        # A,,,,,,,,b......a!!
-        # a a b c d
 
 class Solution():
     def isalpha(self,charac):
@@ -51,7 +28,7 @@ class Solution():
 
         #for i in range(len(str)//2 + 1): NOT RECOMMENDED BECAUSE YOU DONT KNOW HOW MANY NON-ALPHA WILL BE
         while startpos <= endpos:
-            if self.isalpha(str[startpos]) is False:   #!self.isalpha(str[startpos]) gives me an error
+            if self.isalpha(str[startpos]) is False:   #!self.isalpha(str[startpos]) gives me an error (negation in Python is 'not')
                 startpos+=1 #update
                 continue
 

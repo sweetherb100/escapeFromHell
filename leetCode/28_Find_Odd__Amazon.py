@@ -8,12 +8,9 @@ Example:
 3: total 1 count
 
 Output: 3
-
-Algorithm: switching on and off!
-Use Hashmap data structure
-(how to use dictionary : "items()")
 '''
 
+# strategy: Switch on and off. Use Hashmap data structure.
 
 class Solution(object):
     def findodd(self, list):

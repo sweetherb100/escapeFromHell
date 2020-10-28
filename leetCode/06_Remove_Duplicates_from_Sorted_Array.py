@@ -1,6 +1,6 @@
 '''
 Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
-Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+Do not allocate extra space for another array, you must do this by modifying the input array 'in-place with O(1)' extra memory.
 
 Example 1:
 Given nums = [1,1,2],
@@ -16,20 +16,14 @@ It doesn't matter what values are set beyond the returned length.
 class Solution(object):
     #should change the list by reference and shouldn't use extra space (in-place)
     def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-
-        for i in range(len(nums)-1, 0, -1): #starting from the back
+        for i in range(len(nums)-1, 0, -1): #starting from the back until index 1
             if nums[i] == nums[i-1]:
-                nums.pop(i) #pop not the last but specified index
+                nums.pop(i) #pop from the back, will not affect for next iteration
 
-        return len(nums)
+        return nums
 
 
 solution = Solution()
 print(solution.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
 
-for i in range(10-1,0,-1):
-    print(i)
+
