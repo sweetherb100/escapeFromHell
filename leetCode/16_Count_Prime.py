@@ -31,8 +31,8 @@ class Solution(object):
 
 
 solution = Solution()
-print(solution.countPrimes(10))
+print(solution.countPrimes(6))
 
-list2=[0,1,2,3,4,5,6,7]
-print(list2[2:7:2])
+# list2=[0,1,2,3,4,5,6,7]
+# print(list2[2:7:2])
 #[2, 4, 6]

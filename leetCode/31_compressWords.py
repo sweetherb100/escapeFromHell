@@ -1,3 +1,4 @@
+#1.5_compressWords.py
 def compressWords(S):
         #Exception: empty string
         if len(S) == 0:
